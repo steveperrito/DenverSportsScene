@@ -1,0 +1,42 @@
+#header {
+	position: absolute;
+	display:block;
+	top: 0px;
+	left: 0px;
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	height: 350px;
+	width: 100%;
+	background: -webkit-linear-gradient(#FFA500, #ffc04d, #FFA500); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#FFA500, #ffc04d, #FFA500); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#FFA500, #ffc04d, #FFA500); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#FFA500, #ffc04d, #FFA500); /* Standard syntax (must be last) */
+}
+
+#title {
+	margin: auto;
+	padding-top: 58px;
+	letter-spacing: 25px;
+	font-family: verdana,helvetica,arial,sans-serif;
+	color: #926239;
+	font-size: 96px;
+	text-align: center;
+	font-weight: 500;
+}
+
+#navbar {
+	position: absolute;
+	display: block;
+    left: 0px;
+	margin-top: 342px;
+	padding: 0px;
+	border: 0px;
+	height: 50px;
+	width: 100%;
+	background: #ffa500;
+    clear: both;
+}
+
+
+
