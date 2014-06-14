@@ -4,14 +4,23 @@
 <head>
 	<title>Denver Sports Scene!</title>
 	<link rel="stylesheet" type="text/css" href="css/SceneStyle.css">
+    <script src="js/jquery-1.11.1.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).scroll(function() {
+            $('#navbarScroll').toggle($(this).scrollTop() > 300)
+        })
+    </script>
+
 </head>
 
 <body>
+
 	<div id="header">
 		<div id="title">Denver Sports<br /> Scene</div>
 	</div>
 	<div id="navbar">
-        <ol>
+        <ul>
             <li>Yesterday</li>
             <li>Today</li>
             <li>Tomorrow</li>
@@ -19,8 +28,20 @@
             <li>Date 5</li>
             <li style="border-right: 0px;">Date 6</li>
             <!-- and on and on -->
-        </ol>
+        </ul>
 	</div>
+
+    <div id="navbarScroll">
+        <ul>
+            <li>Yesterday</li>
+            <li>Today</li>
+            <li>Tomorrow</li>
+            <li>Date 4</li>
+            <li>Date 5</li>
+            <li style="border-right: 0px;">Date 6</li>
+            <!-- and on and on -->
+        </ul>
+    </div>
 
     <div id="subheader">
         <span class="subtitle">Today's Home Games:</span>
@@ -35,7 +56,7 @@
     </div>
 
 	<div id="GameList">
-		<div id="GameX"></div>
+		<div id="GameXfirst"></div>
 		<div id="GameX"></div>
 		<div id="GameX"></div>
 		<div id="GameX"></div>
