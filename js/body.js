@@ -6,6 +6,8 @@ games = [{ sport: "nfl", homeTeam: "Denver Broncos", awayTeam: "Seattle Seahawks
 
 
 
+
+//takes in array of obj, create's div for each. adds attributes. populates innerHTML.
 function writeBody(gameArr) {
 
     for (i=0; i<gameArr.length; i++) {
