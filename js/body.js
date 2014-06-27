@@ -12,6 +12,9 @@ function writeBody(gameArr) {
 
     for (i=0; i<gameArr.length; i++) {
 
+        var innerContent = ["sport", "versus", "date"];
+        var content = document.createElement('div');
+
         var gameList = document.createElement('div');
         document.getElementById('GameList').appendChild(gameList);
 
@@ -20,8 +23,16 @@ function writeBody(gameArr) {
         if (divOrder[i] == divOrder[0]){
             gameList.setAttribute("id", "GameXfirst");
         } else {
-        gameList.setAttribute("id", "GameX");
+        gameList.setAttribute("class", "GameX");
         }
+
+        innerContent.forEach(function writeInnerContent(x){
+            var newDiv = document.createElement('div');
+            gameList.appendChild(newDiv);
+            newDiv.setAttribute("id", x);
+            newDiv.appendChild(content);
+            content.setAttribute("class","content");
+        });
 
     }
 };
