@@ -24,7 +24,7 @@ function writeBody(gameArr) {
         var divOrder = document.getElementById('GameList').childNodes;
 
         if (divOrder[i] == divOrder[0]){
-            gameList.setAttribute("id", "GameXfirst");
+            gameList.setAttribute("class", "GameXfirst");
         } else {
         gameList.setAttribute("class", "GameX");
         }
