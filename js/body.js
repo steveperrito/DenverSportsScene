@@ -10,17 +10,13 @@ games = [
 
 //takes in array of obj, create's div for each. adds attributes. populates innerHTML.
 function writeBody(gameArr) {
-    var options = {
-        weekday: "long", year: "numeric", month: "short",
-        day: "numeric", hour: "2-digit", minute: "2-digit"
-    };
 
     for (i=0; i<gameArr.length; i++) {
 
         var innerContent = [
-            {sportAtt: "sport", sport: new Text(games[i].sport.toUpperCase())},
-            {sportAtt: "versus", aTeamText: new Text(games[i].awayTeam), hTeamText: new Text(games[i].homeTeam), vsText: new Text("-Vs-")},
-            {sportAtt: "date", date: new Text(formatDate(games[i].time, "dddd, MMMM d")), date2: new Text(formatDate(games[i].time, "h:mm TT")), atText: new Text("-At-")}
+            {sportAtt: "sport", sport: new Text(gameArr[i].sport.toUpperCase())},
+            {sportAtt: "versus", aTeamText: new Text(gameArr[i].awayTeam), hTeamText: new Text(gameArr[i].homeTeam), vsText: new Text("-Vs-")},
+            {sportAtt: "date", date: new Text(formatDate(gameArr[i].time, "dddd, MMMM d")), date2: new Text(formatDate(gameArr[i].time, "h:mm TT")), atText: new Text("-At-")}
         ];
         var gameList = document.createElement('div');
 
