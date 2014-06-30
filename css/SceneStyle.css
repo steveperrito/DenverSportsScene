@@ -172,6 +172,7 @@ body {
     width: 100%;
     min-width: 1019px;
     bottom: 0;
+    position: absolute;
 }
 
 .copywrite {
