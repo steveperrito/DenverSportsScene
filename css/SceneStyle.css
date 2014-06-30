@@ -171,6 +171,7 @@ body {
     height: 150px;
     width: 100%;
     min-width: 1019px;
+    bottom: 0;
 }
 
 .copywrite {
