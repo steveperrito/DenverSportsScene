@@ -7,6 +7,11 @@ body {
     margin: 0px;
 }
 
+#wrapper {
+    min-height:100%;
+    position:relative;
+}
+
 #header {
 	height: 234px;
 	width: 100%;
@@ -113,6 +118,7 @@ body {
 #GameList {
     width: 750px;
     margin: auto;
+    padding-bottom: 190px;
 }
 
 .GameX {
@@ -171,7 +177,8 @@ body {
     height: 150px;
     width: 100%;
     min-width: 1019px;
-    bottom: 0px;
+    position:absolute;
+    bottom:0;
 }
 
 .copywrite {
