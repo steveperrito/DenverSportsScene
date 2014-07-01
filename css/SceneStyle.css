@@ -4,7 +4,8 @@ html {
 }
 
 body {
-    margin: 0px;
+    margin: 0;
+    padding: 0;
     height: 100%;
 }
 
@@ -173,13 +174,13 @@ body {
 }
 
 #footer {
-    margin: 40px auto 0px;
     background: #FFA500;
     height: 150px;
     width: 100%;
     min-width: 1019px;
     position:absolute;
     bottom:0;
+    left:0;
 }
 
 .copywrite {
