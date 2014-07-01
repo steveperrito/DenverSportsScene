@@ -5,8 +5,37 @@ games = [
     { sport: "nhl", homeTeam: "Colorado Avalanche", awayTeam: "Edmonton Oilers", time: new Date(2014, 8, 21, 14, 10, 0, 0)}
 ];
 
+homeGames = [];
+awayGames = [];
 
+setMenuDates();
 
+function setMenuDates () {
+
+    var inFuture = 1;
+    var inFutureScroll = 1;
+
+    var menuLIs = document.getElementsByClassName('future');
+    var menuLIsArr = Array.prototype.slice.call(menuLIs);
+
+    menuLIsArr.forEach(function setDateText (x){
+        inFuture += 1;
+        var futureDay = new Date().setDate(new Date().getDate() + inFuture);
+        var dateText = new Text(formatDate(new Date(futureDay), "dddd"));
+        x.appendChild(dateText);
+    });
+
+    var menuLIsScroll = document.getElementsByClassName('futureScroll');
+    var menuLIsScrollArr = Array.prototype.slice.call(menuLIsScroll);
+
+    menuLIsScrollArr.forEach(function setScrollDateText (x){
+        inFutureScroll += 1;
+        var futureScrollDay = new Date().setDate(new Date().getDate() + inFutureScroll);
+        var dateScrollText = new Text(formatDate(new Date(futureScrollDay), "dddd"));
+        x.appendChild(dateScrollText);
+    })
+
+}
 
 //takes in array of obj, create's div for each. adds attributes. populates innerHTML.
 function writeBody(gameArr) {
@@ -65,7 +94,6 @@ function writeBody(gameArr) {
 writeBody(games);
 
 //formatting for time:
-
 function formatDate(date, format, utc) {
     var MMMM = ["\x00", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     var MMM = ["\x01", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
