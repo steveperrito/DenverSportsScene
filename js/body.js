@@ -2,13 +2,34 @@ games = [
     { sport: "nfl", homeTeam: "Denver Broncos", awayTeam: "Seattle Seahawks", time: new Date(2014, 8, 21, 14, 25, 0, 0)},
     { sport: "mlb", homeTeam: "Colorado Rockies", awayTeam: "Arizona Diamondbacks", time: new Date(2014, 8, 21, 14, 10, 0, 0)},
     { sport: "nba", homeTeam: "Denver Nuggets", awayTeam: "Golden State Warriors", time: new Date(2014, 8, 21, 14, 10, 0, 0)},
-    { sport: "nhl", homeTeam: "Colorado Avalanche", awayTeam: "Edmonton Oilers", time: new Date(2014, 8, 21, 14, 10, 0, 0)}
+    { sport: "nhl", homeTeam: "Colorado Avalanche", awayTeam: "Edmonton Oilers", time: new Date(2014, 8, 21, 14, 10, 0, 0)},
+    {sport: "mls", homeTeam: "LA Galaxy", awayTeam:"Colorado Rapids", time: new Date(2014, 7, 20, 14, 0, 0, 0)}
 ];
-
 homeGames = [];
 awayGames = [];
 
 setMenuDates();
+
+homeAwayPush(games);
+
+writeBody(games);
+
+function resetBody (array) {
+    document.getElementById('GameList').innerHTML = '';
+    writeBody(array);
+};
+
+function homeAwayPush(ary){
+
+    for (i=0; i<ary.length; i++) {
+        var team = ary[i].homeTeam;
+        if (team == "Denver Broncos" || team == "Colorado Rockies" || team == "Denver Nuggets" || team == "Colorado Avalanche" || team == "Colorado Rapids"){
+            homeGames.push(ary[i]);
+        }else {
+            awayGames.push(ary[i]);
+        }
+    }
+}
 
 function setMenuDates () {
 
@@ -90,8 +111,6 @@ function writeBody(gameArr) {
         });
     }
 };
-
-writeBody(games);
 
 //formatting for time:
 function formatDate(date, format, utc) {
