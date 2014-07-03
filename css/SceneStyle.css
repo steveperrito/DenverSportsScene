@@ -117,23 +117,21 @@ font-weight: bold;
     right: 0;
     border: 1px solid black;
     border-top: none;
+    border-right: none;
     border-radius: 0 0 0 10px;
     -webkit-border-radius: 0 0 0 10px;
     -moz-border-radius: 0 0 0 10px;
     z-index: 1;
     height: 50px;
+    width: 380px;
 }
 
 #filter div {
     border-right: 1px solid black;
-    margin-right: 5px;
-    padding-right: 10px;
     height: 50px;
     display: inline-block;
+    width: 120px;
 
-}
-#filter div:first-child {
-    margin-left: 5px;
 }
 
 #filter div:last-child {
@@ -147,6 +145,8 @@ font-weight: bold;
 #filter div div {
     display: table-cell;
     vertical-align: middle;
+    text-align: center;
+    width: 120px;
 }
 
 .selected {
@@ -154,7 +154,7 @@ font-weight: bold;
 }
 
 #subheader {
-padding-top: 40px;
+padding-top: 50px;
 margin-left: 10px;
 font-size: 32px;
 white-space: nowrap;
