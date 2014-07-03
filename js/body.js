@@ -12,7 +12,7 @@ setMenuDates();
 
 homeAwayPush(games);
 
-writeBody(games);
+writeBody(homeGames);
 
 function resetBody (array) {
     document.getElementById('GameList').innerHTML = '';
