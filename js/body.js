@@ -14,9 +14,20 @@ homeAwayPush(games);
 
 writeBody(homeGames);
 
-function resetBody (array) {
+function resetBody (array, e) {
     document.getElementById('GameList').innerHTML = '';
     writeBody(array);
+
+    document.getElementsByClassName('selected')[2].setAttribute('class', '');
+    e.parentElement.setAttribute('class', 'selected');
+
+    if (e.text == 'Away Games') {
+        document.getElementsByClassName('subtitle')[0].textContent = "Today's Away Games:";
+    } else if (e.text == 'Home Games') {
+        document.getElementsByClassName('subtitle')[0].textContent = "Today's Home Games:";
+    } else {
+        document.getElementsByClassName('subtitle')[0].textContent = "All Today's Games:";
+    }
 };
 
 function homeAwayPush(ary){
