@@ -43,7 +43,10 @@ function setMenuDates () {
         inFuture += 1;
         var futureDay = new Date().setDate(new Date().getDate() + inFuture);
         var dateText = new Text(formatDate(new Date(futureDay), "dddd"));
-        x.appendChild(dateText);
+        var linkIt = document.createElement('a');
+        linkIt.href = "#";
+        linkIt.appendChild(dateText);
+        x.appendChild(linkIt);
     });
 
     var menuLIsScroll = document.getElementsByClassName('futureScroll');
@@ -53,7 +56,10 @@ function setMenuDates () {
         inFutureScroll += 1;
         var futureScrollDay = new Date().setDate(new Date().getDate() + inFutureScroll);
         var dateScrollText = new Text(formatDate(new Date(futureScrollDay), "dddd"));
-        x.appendChild(dateScrollText);
+        var linkItScroll = document.createElement('a');
+        linkItScroll.href = "#";
+        linkItScroll.appendChild(dateScrollText);
+        x.appendChild(linkItScroll);
     })
 
 }
