@@ -53,7 +53,7 @@ function setMenuDates () {
     menuLIsArr.forEach(function setDateText (x){
         inFuture += 1;
         var futureDay = new Date().setDate(new Date().getDate() + inFuture);
-        var dateText = new Text(formatDate(new Date(futureDay), "dddd"));
+        var dateText = document.createTextNode(formatDate(new Date(futureDay), "dddd"));
         var linkIt = document.createElement('a');
         linkIt.href = "#";
         linkIt.appendChild(dateText);
@@ -66,7 +66,7 @@ function setMenuDates () {
     menuLIsScrollArr.forEach(function setScrollDateText (x){
         inFutureScroll += 1;
         var futureScrollDay = new Date().setDate(new Date().getDate() + inFutureScroll);
-        var dateScrollText = new Text(formatDate(new Date(futureScrollDay), "dddd"));
+        var dateScrollText = document.createTextNode(formatDate(new Date(futureScrollDay), "dddd"));
         var linkItScroll = document.createElement('a');
         linkItScroll.href = "#";
         linkItScroll.appendChild(dateScrollText);
@@ -81,9 +81,9 @@ function writeBody(gameArr) {
     for (i=0; i<gameArr.length; i++) {
 
         var innerContent = [
-            {sportAtt: "sport", sport: new Text(gameArr[i].sport.toUpperCase())},
-            {sportAtt: "versus", aTeamText: new Text(gameArr[i].awayTeam), hTeamText: new Text(gameArr[i].homeTeam), vsText: new Text("-Vs-")},
-            {sportAtt: "date", date: new Text(formatDate(gameArr[i].time, "dddd, MMMM d")), date2: new Text(formatDate(gameArr[i].time, "h:mm TT")), atText: new Text("-At-")}
+            {sportAtt: "sport", sport: document.createTextNode(gameArr[i].sport.toUpperCase())},
+            {sportAtt: "versus", aTeamText: document.createTextNode(gameArr[i].awayTeam), hTeamText: document.createTextNode(gameArr[i].homeTeam), vsText: document.createTextNode("-Vs-")},
+            {sportAtt: "date", date: document.createTextNode(formatDate(gameArr[i].time, "dddd, MMMM d")), date2: document.createTextNode(formatDate(gameArr[i].time, "h:mm TT")), atText: document.createTextNode("-At-")}
         ];
         var gameList = document.createElement('div');
 

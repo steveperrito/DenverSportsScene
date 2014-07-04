@@ -116,41 +116,50 @@ a {
     font-weight: bold;
 }
 
-@keyframes filterFocus {
+@keyframes filterFocus{
     0% {
         margin-right: -380px;
     }
-
+    70% {
+        margin-right: 10px;
+    }
     100% {
         margin-right: 0;
     }
 }
 
-@-webkit-keyframes filterFocus {
+
+@-webkit-keyframes filterFocus{
     0% {
         margin-right: -380px;
     }
-
+    70% {
+        margin-right: 10px;
+    }
     100% {
         margin-right: 0;
     }
 }
 
-@-moz-keyframes filterFocus {
+@-moz-keyframes filterFocus{
     0% {
         margin-right: -380px;
     }
-
+    70% {
+        margin-right: 10px;
+    }
     100% {
         margin-right: 0;
     }
 }
 
-@-o-keyframes filterFocus {
+@-o-keyframes filterFocus{
     0% {
         margin-right: -380px;
     }
-
+    70% {
+        margin-right: 10px;
+    }
     100% {
         margin-right: 0;
     }
@@ -169,9 +178,9 @@ a {
     height: 50px;
     width: 380px;
     animation: filterFocus 1.5s 1;
-    -webkit-animation: filterFocus 1.5s 1;
-    -moz-animation: filterFocus 1.5s 1;
-    -o-animation: filterFocus 1.5s 1;
+    -webkit-animation: filterFocus 1s 1;
+    -moz-animation: filterFocus 1s 1;
+    -o-animation: filterFocus 1s 1;
 }
 
 #filter div {
@@ -224,6 +233,8 @@ a {
     font-size: 48px;
     margin-left: 491px;
     margin-top: -30px;
+    animation: lil-spinning 1.5s 2;
+    -webkit-animation: lil-spinning 1.5s 2;
 }
 
 #GameList {
