@@ -15,6 +15,8 @@ homeAwayPush(games);
 writeBody(homeGames);
 
 function resetBody (array, e) {
+    this.addEventListener('click', stopDefAction);
+
     document.getElementById('GameList').innerHTML = '';
     writeBody(array);
 
@@ -29,6 +31,10 @@ function resetBody (array, e) {
         document.getElementsByClassName('subtitle')[0].textContent = "All Today's Games:";
     }
 };
+
+function stopDefAction(evt) {
+    evt.preventDefault();
+}
 
 function homeAwayPush(ary){
 

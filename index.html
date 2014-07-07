@@ -26,6 +26,7 @@
     <script type="text/javascript">
         $(document).scroll(function() {
             $('#navbarScroll').toggle($(this).scrollTop() > 234)
+            $('#filterScroll').toggle($(this).scrollTop() > 234)
         })
 
     </script>
@@ -45,6 +46,12 @@
     <div class="bodywrap">
 
         <div id="filter">
+            <div><div class="selected"><a href="#" onclick="resetBody(homeGames, this)">Home Games</a></div></div>
+            <div><div><a href="#" onclick="resetBody(awayGames, this)">Away Games</a></div></div>
+            <div><div><a href="#" onclick="resetBody(games, this)">All Games</a></div></div>
+        </div>
+
+        <div id="filterScroll">
             <div><div class="selected"><a href="#" onclick="resetBody(homeGames, this)">Home Games</a></div></div>
             <div><div><a href="#" onclick="resetBody(awayGames, this)">Away Games</a></div></div>
             <div><div><a href="#" onclick="resetBody(games, this)">All Games</a></div></div>
