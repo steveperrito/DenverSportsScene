@@ -3,68 +3,81 @@
 
 <head>
 	<title>Denver Sports Scene!</title>
+    <meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/SceneStyle.css">
     <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
 </head>
 
 <body>
-
+<div id="wrapper">
 	<div id="header">
 		<div id="title">Denver Sports<br /> Scene</div>
 	</div>
 	<div id="navbar">
         <ul>
-            <li>Yesterday</li>
-            <li>Today</li>
-            <li>Tomorrow</li>
-            <li>Date 4</li>
-            <li>Date 5</li>
-            <li style="border-right: 0px;">Date 6</li>
-            <!-- and on and on -->
+            <li><a href="#">Yesterday</a></li>
+            <li class="selected">Today</li>
+            <li><a href="#">Tomorrow</a></li>
+            <li class="future"></li>
+            <li class="future"></li>
+            <li class="future"></li>
         </ul>
 	</div>
 
     <script type="text/javascript">
         $(document).scroll(function() {
             $('#navbarScroll').toggle($(this).scrollTop() > 234)
+            $('#filterScroll').toggle($(this).scrollTop() > 234)
         })
 
     </script>
 
     <div id="navbarScroll">
         <ul>
-            <li>Yesterday</li>
-            <li>Today</li>
-            <li>Tomorrow</li>
-            <li>Date 4</li>
-            <li>Date 5</li>
-            <li style="border-right: 0px;">Date 6</li>
+            <li><a href="#">Yesterday</a></li>
+            <li class="selectedScroll">Today</li>
+            <li><a href="#">Tomorrow</a></li>
+            <li class="futureScroll"></li>
+            <li class="futureScroll"></li>
+            <li class="futureScroll"></li>
             <!-- and on and on -->
         </ul>
     </div>
 
-    <div id="subheader">
-        <span class="subtitle">Today's Home Games:</span>
-    </div>
+    <div class="bodywrap">
 
-    <div id="catchPhrase">
-        <span>Catch a game tonight!</span>
-    </div>
+        <div id="filter">
+            <div><div class="selected"><a href="#" onclick="resetBody(homeGames, this); selected(this)">Home Games</a></div></div>
+            <div><div><a href="#" onclick="resetBody(awayGames, this); selected(this)">Away Games</a></div></div>
+            <div><div><a href="#" onclick="resetBody(games, this); selected(this)">All Games</a></div></div>
+        </div>
 
-    <div id="subheaderArrow">
-        &#10549;
-    </div>
-	<div id="GameList">
+        <div id="filterScroll">
+            <div><div class="selectedScroll"><a href="#" onclick="resetBody(homeGames, this); selectedScroll(this)">Home Games</a></div></div>
+            <div><div><a href="#" onclick="resetBody(awayGames, this); selectedScroll(this)">Away Games</a></div></div>
+            <div><div><a href="#" onclick="resetBody(games, this); selectedScroll(this)">All Games</a></div></div>
+        </div>
 
-	</div>
+        <div id="subheader">
+            <span class="subtitle">Today's Home Games:</span>
+        </div>
 
-    <div id="GameX">
-        <div id="versus">Seattle Seahawks <br /> --- Vs --- <br />Denver Broncos</div>
-        <div id="date"></div>
-        <div id="sport"></div>
+        <div id="catchPhrase">
+            <span>Catch a game tonight!</span>
+        </div>
+
+        <div id="subheaderArrow">
+            &#10549;
+        </div>
+
+        <div id="GameList">
+
+	    </div>
     </div>
 
 	<div id="footer"><p class="copywrite">&#169; DenverSportsScene.com</p></div>
     <script src="js/body.js" type="text/javascript"></script>
+</div>
 </body>
 </html>
+

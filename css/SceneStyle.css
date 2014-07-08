@@ -4,8 +4,24 @@ html {
 }
 
 body {
-    margin: 0px;
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#wrapper {
+    min-height:100%;
+    position:relative;
+    margin: 0;
+    padding: 0;
+}
+
+/*Header Start*/
 
 #header {
 	height: 234px;
@@ -28,12 +44,14 @@ body {
     min-width: 1019px;
 }
 
+/*Header end, Nav Bar Start*/
+
 #navbar {
-	width: 100%;
-	background: #ffa500;
-    -moz-box-shadow:    0px 3px 3px #7E7E7E;
-    -webkit-box-shadow: 0px 3px 3px #7E7E7E;
-    box-shadow: 0px 3px 3px #7E7E7E;
+    width: 100%;
+    background: #ffa500;
+    -moz-box-shadow: 0px 3px 1px #7E7E7E;
+    -webkit-box-shadow: 0px 3px 1px #7E7E7E;
+    box-shadow: 0px 3px 1px #7E7E7E;
     min-width: 1019px;
 }
 
@@ -53,6 +71,10 @@ body {
     text-align: center;
 }
 
+#navbar ul li:last-child {
+    border-right: 0px;
+}
+
 #navbar ul li:hover {
     font-weight: bold;
 }
@@ -63,7 +85,11 @@ body {
     top: 0px;
     width: 100%;
     background: #ffa500;
+    -moz-box-shadow: 0px 3px 1px #7E7E7E;
+    -webkit-box-shadow: 0px 3px 1px #7E7E7E;
+    box-shadow: 0px 3px 1px #7E7E7E;
     min-width: 1019px;
+    z-index: 2;
 }
 
 #navbarScroll ul {
@@ -82,12 +108,160 @@ body {
     text-align: center;
 }
 
+#navbarScroll ul li:last-child {
+    border-right: 0px;
+}
+
+
 #navbarScroll ul li:hover {
+    font-weight: bold;
+}
+/*Nav Bar end Filter Start*/
+
+@keyframes filterFocus{
+    0% {
+        margin-right: -380px;
+    }
+    70% {
+        margin-right: 10px;
+    }
+    100% {
+        margin-right: 0;
+    }
+}
+
+
+@-webkit-keyframes filterFocus{
+    0% {
+        margin-right: -380px;
+    }
+    70% {
+        margin-right: 10px;
+    }
+    100% {
+        margin-right: 0;
+    }
+}
+
+@-moz-keyframes filterFocus{
+    0% {
+        margin-right: -380px;
+    }
+    70% {
+        margin-right: 10px;
+    }
+    100% {
+        margin-right: 0;
+    }
+}
+
+@-o-keyframes filterFocus{
+    0% {
+        margin-right: -380px;
+    }
+    70% {
+        margin-right: 10px;
+    }
+    100% {
+        margin-right: 0;
+    }
+}
+
+#filter {
+    position: absolute;
+    right: 0;
+    border: 1px solid black;
+    border-top: none;
+    border-right: none;
+    border-radius: 0 0 0 10px;
+    -webkit-border-radius: 0 0 0 10px;
+    -moz-border-radius: 0 0 0 10px;
+    z-index: 1;
+    height: 50px;
+    width: 380px;
+    animation: filterFocus 1.5s 1;
+    -webkit-animation: filterFocus 1s 1;
+    -moz-animation: filterFocus 1s 1;
+    -o-animation: filterFocus 1s 1;
+}
+
+#filter div {
+    border-right: 1px solid black;
+    height: 50px;
+    display: inline-block;
+    width: 120px;
+
+}
+
+#filter div div {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 120px;
+}
+
+#filter div:last-child {
+    border-right: 0px;
+}
+
+#filter div:hover {
+    font-weight: bold;
+}
+
+#filterScroll {
+    position: fixed;
+    background: #fee8bf;
+    z-index: 1;
+    right: 0;
+    top: 50px;
+    border: 1px solid black;
+    border-top: none;
+    border-right: none;
+    border-radius: 0 0 0 10px;
+    -webkit-border-radius: 0 0 0 10px;
+    -moz-border-radius: 0 0 0 10px;
+    height: 50px;
+    width: 380px;
+    animation: filterFocus 1.5s 1;
+    display: none;
+}
+
+#filterScroll div {
+    border-right: 1px solid black;
+    height: 50px;
+    display: inline-block;
+    width: 120px;
+
+}
+
+#filterScroll div div {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 120px;
+}
+
+#filterScroll div:last-child {
+    border-right: 0px;
+}
+
+#filterScroll div:hover {
+    font-weight: bold;
+}
+
+/*Filter end*/
+
+.selected {
+    font-weight: bold;
+}
+
+.selectedScroll {
     font-weight: bold;
 }
 
 #subheader {
-    margin-top: 40px;
+    padding-top: 50px;
+    margin-left: 10px;
     font-size: 32px;
     white-space: nowrap;
 }
@@ -110,35 +284,78 @@ body {
     margin-top: -30px;
 }
 
+/* List of games... */
+
 #GameList {
     width: 750px;
     margin: auto;
+    padding-bottom: 190px;
 }
 
-#GameX {
+.GameXfirst {
     width: 750px;
-    height: 100px;
+    height: 102px;
+    margin: 0;
+    -moz-box-shadow: inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow: inset 0 0 10px #000000;
+}
+
+.GameX {
+    width: 750px;
+    height: 102px;
     margin: 40px 0px 0px 0px;
-    -moz-box-shadow:    inset 0 0 10px #000000;
+    -moz-box-shadow: inset 0 0 10px #000000;
     -webkit-box-shadow: inset 0 0 10px #000000;
-    box-shadow:         inset 0 0 10px #000000;
+    box-shadow: inset 0 0 10px #000000;
 }
 
-#GameXfirst {
-    width: 750px;
+.sport {
+    width: 245px;
     height: 100px;
-    margin: 0px 0px 0px 0px;
-    -moz-box-shadow:    inset 0 0 10px #000000;
-    -webkit-box-shadow: inset 0 0 10px #000000;
-    box-shadow:         inset 0 0 10px #000000;
+    display: inline-table;
+    text-align: center;
+    font-size: 42px;
+    font-style: italic;
+    color: #7E7E7E;
+    letter-spacing: 10px;
+    border-right: 1px solid #7E7E7E;
 }
+
+.versus {
+    width: 245px;
+    height: 100px;
+    display: inline-table;
+    text-align: center;
+    border-right: 1px solid #7E7E7E;
+}
+
+.date {
+    width: 245px;
+    height: 100px;
+    display: inline-table;
+    text-align: center;
+}
+
+.content {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* List of games end, start Footer */
 
 #footer {
-    margin: 40px auto 0px;
     background: #FFA500;
     height: 150px;
     width: 100%;
     min-width: 1019px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    -moz-box-shadow: 0px -6px 7px -6px #7E7E7E;
+    -webkit-box-shadow: 0px -6px 7px -6px #7E7E7E;
+    box-shadow: 0px -6px 7px -6px #7E7E7E;
+
 }
 
 .copywrite {
@@ -146,3 +363,7 @@ body {
     font-size: 10px;
     text-align: center;
 }
+
+
+/* Footer end*/
+
