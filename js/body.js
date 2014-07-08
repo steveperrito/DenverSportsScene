@@ -8,20 +8,17 @@ games = [
 homeGames = [];
 awayGames = [];
 
-setMenuDates();
-
 homeAwayPush(games);
+
+setMenuDates();
 
 writeBody(homeGames);
 
 function resetBody (array, e) {
-    this.addEventListener('click', stopDefAction);
+    e.addEventListener('click', stopDefAction);
 
     document.getElementById('GameList').innerHTML = '';
     writeBody(array);
-
-    document.getElementsByClassName('selected')[2].setAttribute('class', '');
-    e.parentElement.setAttribute('class', 'selected');
 
     if (e.text == 'Away Games') {
         document.getElementsByClassName('subtitle')[0].textContent = "Today's Away Games:";
@@ -31,6 +28,38 @@ function resetBody (array, e) {
         document.getElementsByClassName('subtitle')[0].textContent = "All Today's Games:";
     }
 };
+
+function selected (e) {
+
+    document.getElementsByClassName('selected')[1].setAttribute('class', '');
+    e.parentElement.setAttribute('class', 'selected');
+
+    document.getElementsByClassName('selectedScroll')[1].setAttribute('class', '');
+
+    if (e.text == 'Away Games') {
+        document.getElementById('filterScroll').firstElementChild.nextElementSibling.setAttribute('class', 'selectedScroll');
+    } else if (e.text == 'Home Games') {
+        document.getElementById('filterScroll').firstElementChild.setAttribute('class', 'selectedScroll');
+    } else {
+        document.getElementById('filterScroll').lastElementChild.setAttribute('class', 'selectedScroll');
+    }
+}
+
+function selectedScroll (e) {
+
+    document.getElementsByClassName('selectedScroll')[1].setAttribute('class', '');
+    e.parentElement.setAttribute('class', 'selectedScroll');
+
+    document.getElementsByClassName('selected')[1].setAttribute('class', '');
+
+    if (e.text == 'Away Games') {
+        document.getElementById('filter').firstElementChild.nextElementSibling.setAttribute('class', 'selected');
+    } else if (e.text == 'Home Games') {
+        document.getElementById('filter').firstElementChild.setAttribute('class', 'selected');
+    } else {
+        document.getElementById('filter').lastElementChild.setAttribute('class', 'selected');
+    }
+}
 
 function stopDefAction(evt) {
     evt.preventDefault();

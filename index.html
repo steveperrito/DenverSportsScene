@@ -3,6 +3,7 @@
 
 <head>
 	<title>Denver Sports Scene!</title>
+    <meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/SceneStyle.css">
     <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
 </head>
@@ -34,7 +35,7 @@
     <div id="navbarScroll">
         <ul>
             <li><a href="#">Yesterday</a></li>
-            <li class="selected">Today</li>
+            <li class="selectedScroll">Today</li>
             <li><a href="#">Tomorrow</a></li>
             <li class="futureScroll"></li>
             <li class="futureScroll"></li>
@@ -46,15 +47,15 @@
     <div class="bodywrap">
 
         <div id="filter">
-            <div><div class="selected"><a href="#" onclick="resetBody(homeGames, this)">Home Games</a></div></div>
-            <div><div><a href="#" onclick="resetBody(awayGames, this)">Away Games</a></div></div>
-            <div><div><a href="#" onclick="resetBody(games, this)">All Games</a></div></div>
+            <div><div class="selected"><a href="#" onclick="resetBody(homeGames, this); selected(this)">Home Games</a></div></div>
+            <div><div><a href="#" onclick="resetBody(awayGames, this); selected(this)">Away Games</a></div></div>
+            <div><div><a href="#" onclick="resetBody(games, this); selected(this)">All Games</a></div></div>
         </div>
 
         <div id="filterScroll">
-            <div><div class="selected"><a href="#" onclick="resetBody(homeGames, this)">Home Games</a></div></div>
-            <div><div><a href="#" onclick="resetBody(awayGames, this)">Away Games</a></div></div>
-            <div><div><a href="#" onclick="resetBody(games, this)">All Games</a></div></div>
+            <div><div class="selectedScroll"><a href="#" onclick="resetBody(homeGames, this); selectedScroll(this)">Home Games</a></div></div>
+            <div><div><a href="#" onclick="resetBody(awayGames, this); selectedScroll(this)">Away Games</a></div></div>
+            <div><div><a href="#" onclick="resetBody(games, this); selectedScroll(this)">All Games</a></div></div>
         </div>
 
         <div id="subheader">

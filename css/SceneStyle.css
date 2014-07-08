@@ -259,6 +259,10 @@ a {
     font-weight: bold;
 }
 
+.selectedScroll {
+    font-weight: bold;
+}
+
 #subheader {
     padding-top: 50px;
     margin-left: 10px;
