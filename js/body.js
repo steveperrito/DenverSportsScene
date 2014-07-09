@@ -3,7 +3,8 @@ games = [
     { sport: "mls", homeTeam: "LA Galaxy", awayTeam:"Colorado Rapids", time: new Date(2014, 7, 20, 14, 0, 0, 0)},
     { sport: "nfl", homeTeam: "Denver Broncos", awayTeam: "Seattle Seahawks", time: new Date(2014, 8, 21, 14, 25, 0, 0)},
     { sport: "mlb", homeTeam: "Colorado Rockies", awayTeam: "Arizona Diamondbacks", time: new Date(2014, 8, 21, 14, 10, 0, 0)},
-    { sport: "nba", homeTeam: "Denver Nuggets", awayTeam: "Golden State Warriors", time: new Date(2014, 8, 21, 14, 10, 0, 0)}
+    { sport: "nba", homeTeam: "Denver Nuggets", awayTeam: "Golden State Warriors", time: new Date(2014, 8, 21, 14, 10, 0, 0)},
+    { sport: "nccab", homeTeam: "Colorado Buffs", awayTeam: "USC Tojans", time: new Date(2014, 8, 21, 14, 10, 0, 0)}
 ];
 
 homeGames = [];
@@ -36,6 +37,12 @@ function sortEm (aryOfGames) {
             case "ncaahockey":
                 i.rank = 8;
                 break;
+            case "lacrosse":
+                i.rank = 9;
+                break;
+            case "ncaawb":
+                i.rank = 10;
+                break;
         }
     });
 
@@ -53,7 +60,6 @@ setMenuDates();
 writeBody(homeGames);
 
 function resetBody (array, e) {
-    e.addEventListener('click', stopDefAction);
 
     document.getElementById('GameList').innerHTML = '';
     writeBody(array);
@@ -99,15 +105,18 @@ function selectedScroll (e) {
     }
 }
 
-function stopDefAction(evt) {
-    evt.preventDefault();
+function stopDefAction(el) {
+    el.click(function (event) {
+        event.preventDefault();
+    });
+
 }
 
 function homeAwayPush(ary){
 
     for (i=0; i<ary.length; i++) {
         var team = ary[i].homeTeam;
-        if (team == "Denver Broncos" || team == "Colorado Rockies" || team == "Denver Nuggets" || team == "Colorado Avalanche" || team == "Colorado Rapids"){
+        if (team == "Denver Broncos" || team == "Colorado Rockies" || team == "Denver Nuggets" || team == "Colorado Avalanche" || team == "Colorado Rapids" || team == "DU Pioneers" || team == "Colorado Buffs" || team == "Metro State" || team == "Air Force" || team == "Colorado State" || team == "Colorado Mammoth" || team == "Denver Outlaws"){
             homeGames.push(ary[i]);
         }else {
             awayGames.push(ary[i]);

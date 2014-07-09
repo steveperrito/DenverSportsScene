@@ -47,15 +47,15 @@
     <div class="bodywrap">
 
         <div id="filter">
-            <div><div class="selected"><a href="#" onclick="resetBody(homeGames, this); selected(this)">Home Games</a></div></div>
-            <div><div><a href="#" onclick="resetBody(awayGames, this); selected(this)">Away Games</a></div></div>
-            <div><div><a href="#" onclick="resetBody(games, this); selected(this)">All Games</a></div></div>
+            <div><div class="selected"><a href="#" onclick="event.preventDefault(); resetBody(homeGames, this); selected(this)">Home Games</a></div></div>
+            <div><div><a href="#" onclick="event.preventDefault(); resetBody(awayGames, this); selected(this)">Away Games</a></div></div>
+            <div><div><a href="#" onclick="event.preventDefault(); resetBody(games, this); selected(this)">All Games</a></div></div>
         </div>
 
         <div id="filterScroll">
-            <div><div class="selectedScroll"><a href="#" onclick="resetBody(homeGames, this); selectedScroll(this)">Home Games</a></div></div>
-            <div><div><a href="#" onclick="resetBody(awayGames, this); selectedScroll(this)">Away Games</a></div></div>
-            <div><div><a href="#" onclick="resetBody(games, this); selectedScroll(this)">All Games</a></div></div>
+            <div><div class="selectedScroll"><a href="#" onclick="event.preventDefault(); resetBody(homeGames, this); selectedScroll(this)">Home Games</a></div></div>
+            <div><div><a href="#" onclick="event.preventDefault(); resetBody(awayGames, this); selectedScroll(this)">Away Games</a></div></div>
+            <div><div><a href="#" onclick="event.preventDefault(); resetBody(games, this); selectedScroll(this)">All Games</a></div></div>
         </div>
 
         <div id="subheader">
