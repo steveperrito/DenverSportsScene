@@ -105,13 +105,6 @@ function selectedScroll (e) {
     }
 }
 
-function stopDefAction(el) {
-    el.click(function (event) {
-        event.preventDefault();
-    });
-
-}
-
 function homeAwayPush(ary){
 
     for (i=0; i<ary.length; i++) {
