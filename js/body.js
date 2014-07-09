@@ -1,12 +1,50 @@
 games = [
+    { sport: "nhl", homeTeam: "Colorado Avalanche", awayTeam: "Edmonton Oilers", time: new Date(2014, 8, 21, 14, 10, 0, 0)},
+    { sport: "mls", homeTeam: "LA Galaxy", awayTeam:"Colorado Rapids", time: new Date(2014, 7, 20, 14, 0, 0, 0)},
     { sport: "nfl", homeTeam: "Denver Broncos", awayTeam: "Seattle Seahawks", time: new Date(2014, 8, 21, 14, 25, 0, 0)},
     { sport: "mlb", homeTeam: "Colorado Rockies", awayTeam: "Arizona Diamondbacks", time: new Date(2014, 8, 21, 14, 10, 0, 0)},
-    { sport: "nba", homeTeam: "Denver Nuggets", awayTeam: "Golden State Warriors", time: new Date(2014, 8, 21, 14, 10, 0, 0)},
-    { sport: "nhl", homeTeam: "Colorado Avalanche", awayTeam: "Edmonton Oilers", time: new Date(2014, 8, 21, 14, 10, 0, 0)},
-    {sport: "mls", homeTeam: "LA Galaxy", awayTeam:"Colorado Rapids", time: new Date(2014, 7, 20, 14, 0, 0, 0)}
+    { sport: "nba", homeTeam: "Denver Nuggets", awayTeam: "Golden State Warriors", time: new Date(2014, 8, 21, 14, 10, 0, 0)}
 ];
+
 homeGames = [];
 awayGames = [];
+
+function sortEm (aryOfGames) {
+    aryOfGames.forEach(function rankEm(i) {
+        switch (i.sport) {
+            case "nfl":
+                i.rank = 1;
+                break;
+            case "ncaaf":
+                i.rank = 2;
+                break;
+            case "mlb":
+                i.rank = 3;
+                break;
+            case "nba":
+                i.rank = 4;
+                break;
+            case "ncaab":
+                i.rank = 5;
+                break;
+            case "nhl":
+                i.rank = 6;
+                break;
+            case "mls":
+                i.rank = 7;
+                break;
+            case "ncaahockey":
+                i.rank = 8;
+                break;
+        }
+    });
+
+    aryOfGames.sort(function (a,b) {
+        return a.rank - b.rank;
+    })
+}
+
+sortEm(games);
 
 homeAwayPush(games);
 
