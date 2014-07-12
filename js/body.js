@@ -85,6 +85,14 @@ function resetBody (array, e) {
     } else {
         document.getElementsByClassName('subtitle')[0].textContent = "All Today's Games:";
     }
+
+    $(document).ready(function(){
+        $timer = 0;
+        $('#GameList').children().each(function(){
+            $timer += 500;
+            $(this).fadeIn($timer);
+        });
+    });
 };
 
 function selected (e) {
