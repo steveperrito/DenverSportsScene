@@ -15,33 +15,47 @@ function sortEm (aryOfGames) {
         switch (i.sport) {
             case "nfl":
                 i.rank = 1;
+                i.lable = "NFL";
                 break;
             case "ncaaf":
                 i.rank = 2;
+                i.label = "NCAA";
                 break;
             case "mlb":
                 i.rank = 3;
+                i.label = "MLB";
                 break;
             case "nba":
                 i.rank = 4;
+                i.label = "NBA";
                 break;
             case "ncaab":
                 i.rank = 5;
+                i.label = "NCAA";
                 break;
             case "nhl":
                 i.rank = 6;
+                i.label = "NHL";
                 break;
             case "mls":
                 i.rank = 7;
+                i.label = "MLS";
                 break;
             case "ncaahockey":
                 i.rank = 8;
+                i.label = "NCAA";
                 break;
-            case "lacrosse":
+            case "mll":
                 i.rank = 9;
+                i.label = "MLL";
+                break;
+            case "nll":
+                i.rank = 10;
+                i.label = "NLL";
                 break;
             case "ncaawb":
-                i.rank = 10;
+                i.rank = 11;
+                i.label = "NCAA";
                 break;
         }
     });
@@ -204,6 +218,14 @@ function writeBody(gameArr) {
         });
     }
 };
+
+$(document).ready(function(){
+    $timer = 0;
+    $('#GameList').children().each(function(){
+        $timer += 500;
+        $(this).fadeIn($timer);
+    });
+});
 
 //formatting for time:
 function formatDate(date, format, utc) {

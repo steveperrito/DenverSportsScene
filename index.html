@@ -26,9 +26,9 @@
 
     <script type="text/javascript">
         $(document).scroll(function() {
-            $('#navbarScroll').toggle($(this).scrollTop() > 234)
-            $('#filterScroll').toggle($(this).scrollTop() > 234)
-        })
+            $('#navbarScroll').toggle($(this).scrollTop() > 234);
+            $('#filterScroll').toggle($(this).scrollTop() > 234);
+        });
 
     </script>
 
@@ -63,16 +63,82 @@
         </div>
 
         <div id="catchPhrase">
-            <span>Catch a game tonight!</span>
+            Catch a game tonight! <img src="img/arrow.png" width="40"/>
         </div>
 
-        <div id="subheaderArrow">
-            &#10549;
+        <div class="GameXtest">
+            <div class="venuetest">
+                <div class="ribbonWrapper">
+                    <div class="ribbon">venue</div>
+                </div>
+                <table>
+                    <tr>
+                        <td class="venueCell">
+                            <strong>FedEx Field</strong> <em>Landover, MD</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="timeCell">
+                            7:00 PM EST<br /> Wednesday, July 9
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="versustest">
+                <div class="ribbonWrapper">
+                    <div class="ribbon">game</div>
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <img src="img/SeattleSeahawks.png" width="90" height="40" /> <br />-Vs-<br /><img src="img/DenverBroncosV2.png" width="110" height="50" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="weathertest">
+                <div class="ribbonWrapper">
+                    <div class="ribbon">wthr</div>
+                </div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><img src="img/partlycloudy.gif" /></td>
+                        </tr>
+                        <tr>
+                            <td> Currently 65.4 F, Partly Cloudy</td>
+                        </tr>
+                        <tr>
+                            <td>Wind Direction: <strong>NNW</strong><br />Wind Speed: <strong>22 mph</strong><br />Gusts up to: <strong>28 mph</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="sporttest">
+                <div class="ribbonWrapper">
+                    <div class="ribbon">info</div>
+                </div>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>Driving Directions</li>
+                                <li>Tickets</li>
+                                <li>Venue Website</li>
+                            </ul>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div id="GameList">
 
 	    </div>
+
     </div>
 
 	<div id="footer"><p class="copywrite">&#169; DenverSportsScene.com</p></div>
