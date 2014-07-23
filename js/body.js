@@ -1,14 +1,51 @@
 games = [
-    { sport: "nhl", homeTeam: "Colorado Avalanche", awayTeam: "Edmonton Oilers", time: new Date(2014, 8, 21, 14, 10, 0, 0)},
-    { sport: "mls", homeTeam: "LA Galaxy", awayTeam:"Colorado Rapids", time: new Date(2014, 7, 20, 14, 0, 0, 0)},
-    { sport: "nfl", homeTeam: "Denver Broncos", awayTeam: "Seattle Seahawks", time: new Date(2014, 8, 21, 14, 25, 0, 0)},
-    { sport: "mlb", homeTeam: "Colorado Rockies", awayTeam: "Arizona Diamondbacks", time: new Date(2014, 8, 21, 14, 10, 0, 0)},
-    { sport: "nba", homeTeam: "Denver Nuggets", awayTeam: "Golden State Warriors", time: new Date(2014, 8, 21, 14, 10, 0, 0)},
-    { sport: "nccab", homeTeam: "Colorado Buffs", awayTeam: "USC Tojans", time: new Date(2014, 8, 21, 14, 10, 0, 0)}
+    { sport: "nhl", homeTeam: "Colorado Avalanche", awayTeam: "Edmonton Oilers", time: new Date(2014, 8, 21, 14, 10, 0, 0), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "Maryland", weatherImg: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", windDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/"},
+    { sport: "mls", homeTeam: "LA Galaxy", awayTeam:"Colorado Rapids", time: new Date(2014, 7, 20, 14, 0, 0, 0), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "Maryland", weatherImg: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", windDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/"},
+    { sport: "nfl", homeTeam: "Denver Broncos", awayTeam: "Seattle Seahawks", time: new Date(2014, 8, 21, 14, 25, 0, 0), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "Maryland", weatherImg: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", windDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/"},
+    { sport: "mlb", homeTeam: "Colorado Rockies", awayTeam: "Arizona Diamondbacks", time: new Date(2014, 8, 21, 14, 10, 0, 0), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "Maryland", weatherImg: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", windDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/"},
+    { sport: "nba", homeTeam: "Denver Nuggets", awayTeam: "Golden State Warriors", time: new Date(2014, 8, 21, 14, 10, 0, 0), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "Maryland", weatherImg: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", windDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/"},
+    { sport: "nccab", homeTeam: "Colorado Buffs", awayTeam: "USC Tojans", time: new Date(2014, 8, 21, 14, 10, 0, 0), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "Maryland", weatherImg: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", windDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/"}
 ];
 
 homeGames = [];
 awayGames = [];
+
+sortEm(games);
+
+homeAwayPush(games);
+
+writeBody(homeGames);
+
+$(document).scroll(function() {
+    $('#navbarScroll').toggle($(this).scrollTop() > 58);
+    $('#filterScroll').toggle($(this).scrollTop() > 58);
+});
+
+$(document).ready(function(){
+    $('.filterListen').click(function(event){
+        event.preventDefault();
+        selected($(this));
+    });
+});
+
+$(document).ready(function (){
+    var futureInc = 1;
+    var futureIncScroll = 1;
+
+    $('.future').each(function (){
+        futureInc += 1;
+        var futureDay = new Date().setDate(new Date().getDate() + futureInc);
+        $futureText = document.createTextNode(formatDate(new Date(futureDay), "dddd"));
+        $(this).append($futureText);
+    });
+
+    $('.futureScroll').each(function (){
+        futureIncScroll += 1;
+        var futureDayScroll = new Date().setDate(new Date().getDate() + futureIncScroll);
+        $futureTextScroll = document.createTextNode(formatDate(new Date(futureDayScroll), "dddd"));
+        $(this).append($futureTextScroll);
+    })
+});
 
 function sortEm (aryOfGames) {
     aryOfGames.forEach(function rankEm(i) {
@@ -65,66 +102,31 @@ function sortEm (aryOfGames) {
     })
 }
 
-sortEm(games);
-
-homeAwayPush(games);
-
-setMenuDates();
-
-writeBody(homeGames);
-
-function resetBody (array, e) {
-
-    document.getElementById('GameList').innerHTML = '';
-    writeBody(array);
-
-    if (e.text == 'Away Games') {
-        document.getElementsByClassName('subtitle')[0].textContent = "Today's Away Games:";
-    } else if (e.text == 'Home Games') {
-        document.getElementsByClassName('subtitle')[0].textContent = "Today's Home Games:";
-    } else {
-        document.getElementsByClassName('subtitle')[0].textContent = "All Today's Games:";
-    }
-
-    $(document).ready(function(){
-        $timer = 0;
-        $('#GameList').children().each(function(){
-            $timer += 500;
-            $(this).fadeIn($timer);
-        });
-    });
-};
-
 function selected (e) {
+    $text = e.text();
 
-    document.getElementsByClassName('selected')[1].setAttribute('class', '');
-    e.parentElement.setAttribute('class', 'selected');
+    $('#GameList').empty();
 
-    document.getElementsByClassName('selectedScroll')[1].setAttribute('class', '');
+    $('.selected:eq(1)').removeClass('selected');
+    $('.selectedScroll:eq(1)').removeClass('selectedScroll');
 
-    if (e.text == 'Away Games') {
-        document.getElementById('filterScroll').firstElementChild.nextElementSibling.setAttribute('class', 'selectedScroll');
-    } else if (e.text == 'Home Games') {
-        document.getElementById('filterScroll').firstElementChild.setAttribute('class', 'selectedScroll');
+    if ($text == 'Away Games') {
+        $('#filterScroll').find('div:nth-child(2)>div>a').addClass('selectedScroll');
+        $('#filter').find('div:nth-child(2)>div>a').addClass('selected');
+        $('.subtitle').text('Today\'s Away Games:');
+        writeBody(awayGames);
+    } else if ($text == 'Home Games') {
+        $('#filterScroll').find('div:nth-child(1)>div>a').addClass('selectedScroll');
+        $('#filter').find('div:nth-child(1)>div>a').addClass('selected');
+        $('.subtitle').text('Today\'s Home Games:');
+        writeBody(homeGames);
     } else {
-        document.getElementById('filterScroll').lastElementChild.setAttribute('class', 'selectedScroll');
+        $('#filterScroll').find('div:nth-child(3)>div>a').addClass('selectedScroll');
+        $('#filter').find('div:nth-child(3)>div>a').addClass('selected');
+        $('.subtitle').text('All Today\'s Games:');
+        writeBody(games);
     }
-}
 
-function selectedScroll (e) {
-
-    document.getElementsByClassName('selectedScroll')[1].setAttribute('class', '');
-    e.parentElement.setAttribute('class', 'selectedScroll');
-
-    document.getElementsByClassName('selected')[1].setAttribute('class', '');
-
-    if (e.text == 'Away Games') {
-        document.getElementById('filter').firstElementChild.nextElementSibling.setAttribute('class', 'selected');
-    } else if (e.text == 'Home Games') {
-        document.getElementById('filter').firstElementChild.setAttribute('class', 'selected');
-    } else {
-        document.getElementById('filter').lastElementChild.setAttribute('class', 'selected');
-    }
 }
 
 function homeAwayPush(ary){
@@ -137,39 +139,6 @@ function homeAwayPush(ary){
             awayGames.push(ary[i]);
         }
     }
-}
-
-function setMenuDates () {
-
-    var inFuture = 1;
-    var inFutureScroll = 1;
-
-    var menuLIs = document.getElementsByClassName('future');
-    var menuLIsArr = Array.prototype.slice.call(menuLIs);
-
-    menuLIsArr.forEach(function setDateText (x){
-        inFuture += 1;
-        var futureDay = new Date().setDate(new Date().getDate() + inFuture);
-        var dateText = document.createTextNode(formatDate(new Date(futureDay), "dddd"));
-        var linkIt = document.createElement('a');
-        linkIt.href = "#";
-        linkIt.appendChild(dateText);
-        x.appendChild(linkIt);
-    });
-
-    var menuLIsScroll = document.getElementsByClassName('futureScroll');
-    var menuLIsScrollArr = Array.prototype.slice.call(menuLIsScroll);
-
-    menuLIsScrollArr.forEach(function setScrollDateText (x){
-        inFutureScroll += 1;
-        var futureScrollDay = new Date().setDate(new Date().getDate() + inFutureScroll);
-        var dateScrollText = document.createTextNode(formatDate(new Date(futureScrollDay), "dddd"));
-        var linkItScroll = document.createElement('a');
-        linkItScroll.href = "#";
-        linkItScroll.appendChild(dateScrollText);
-        x.appendChild(linkItScroll);
-    })
-
 }
 
 //takes in array of obj, create's div for each. adds attributes. populates innerHTML.
@@ -226,14 +195,6 @@ function writeBody(gameArr) {
         });
     }
 };
-
-$(document).ready(function(){
-    $timer = 0;
-    $('#GameList').children().each(function(){
-        $timer += 500;
-        $(this).fadeIn($timer);
-    });
-});
 
 //formatting for time:
 function formatDate(date, format, utc) {
