@@ -32,14 +32,12 @@ $(document).ready(function(){
 $(document).ready(function (){
     var futureInc = 1;
     var futureIncScroll = 1;
-
     $('.future').each(function (){
         futureInc += 1;
         var futureDay = new Date().setDate(new Date().getDate() + futureInc);
         $futureText = document.createTextNode(formatDate(new Date(futureDay), "dddd"));
         $(this).append($futureText);
     });
-
     $('.futureScroll').each(function (){
         futureIncScroll += 1;
         var futureDayScroll = new Date().setDate(new Date().getDate() + futureIncScroll);
@@ -97,7 +95,6 @@ function sortEm (aryOfGames) {
                 break;
         }
     });
-
     aryOfGames.sort(function (a,b) {
         return a.rank - b.rank;
     })
@@ -105,12 +102,9 @@ function sortEm (aryOfGames) {
 
 function selected (e) {
     $text = e.text();
-
     $('#GameList').empty();
-
     $('.selected:eq(1)').removeClass('selected');
     $('.selectedScroll:eq(1)').removeClass('selectedScroll');
-
     if ($text == 'Away Games') {
         $('#filterScroll').find('div:nth-child(2)>div>a').addClass('selectedScroll');
         $('#filter').find('div:nth-child(2)>div>a').addClass('selected');
@@ -127,7 +121,6 @@ function selected (e) {
         $('.subtitle').text('All Today\'s Games:');
         writeBodyNew(games);
     }
-
 }
 
 function homeAwayPush(ary){
@@ -141,12 +134,6 @@ function homeAwayPush(ary){
         }
     }
 }
-
-
-/*function writeBodyNew (aryOfObj) {
-        var base_template = $('.GameXtestTemp').clone();
-        $('#GameList').append(base_template);
-}*/
 
 function writeBodyNew (arry) {
     arry.forEach(function listGame(x){
@@ -201,61 +188,6 @@ function writeBodyNew (arry) {
 
 
 };
-
-//takes in array of obj, create's div for each. adds attributes. populates innerHTML.
-/*function writeBody(gameArr) {
-
-    for (i=0; i<gameArr.length; i++) {
-
-        var innerContent = [
-            {sportAtt: "sport", sport: document.createTextNode(gameArr[i].sport.toUpperCase())},
-            {sportAtt: "versus", aTeamText: document.createTextNode(gameArr[i].awayTeam), hTeamText: document.createTextNode(gameArr[i].homeTeam), vsText: document.createTextNode("-Vs-")},
-            {sportAtt: "date", date: document.createTextNode(formatDate(gameArr[i].time, "dddd, MMMM d")), date2: document.createTextNode(formatDate(gameArr[i].time, "h:mm TT")), atText: document.createTextNode("-At-")}
-        ];
-
-        var gameList = document.createElement('div');
-
-        document.getElementById('GameList').appendChild(gameList);
-
-        var divOrder = document.getElementById('GameList').childNodes;
-
-        if (divOrder[i] == divOrder[0]){
-            gameList.setAttribute("class", "GameXfirst");
-        } else {
-            gameList.setAttribute("class", "GameX");
-        }
-
-        innerContent.forEach(function writeInnerContent(x){
-
-            var lineBreak1 = document.createElement('br');
-            var lineBreak2 = document.createElement('br');
-            var content = document.createElement('div');
-            var newDiv = document.createElement('div');
-
-            gameList.appendChild(newDiv);
-            newDiv.setAttribute("class", x.sportAtt);
-            newDiv.appendChild(content);
-            content.setAttribute("class","content");
-
-            if (x == innerContent[0]) {
-                content.appendChild(x.sport);
-            } else if (x == innerContent[1]) {
-                content.appendChild(x.aTeamText);
-                content.appendChild(lineBreak1);
-                content.appendChild(x.vsText);
-                content.appendChild(lineBreak2);
-                content.appendChild(x.hTeamText);
-            } else {
-                content.appendChild(x.date);
-                content.appendChild(lineBreak1);
-                content.appendChild(x.atText);
-                content.appendChild(lineBreak2);
-                content.appendChild(x.date2);
-            }
-
-        });
-    }
-};*/
 
 //formatting for time:
 function formatDate(date, format, utc) {
