@@ -1,10 +1,10 @@
 games = [
-    { sport: "nhl", homeTeam: "Colorado Avalanche", awayTeam: "Edmonton Oilers", time: new Date(2014, 8, 21, 14, 10, 0, 0), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "Maryland", weatherImg: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", windDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/"},
-    { sport: "mls", homeTeam: "LA Galaxy", awayTeam:"Colorado Rapids", time: new Date(2014, 7, 20, 14, 0, 0, 0), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "Maryland", weatherImg: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", windDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/"},
-    { sport: "nfl", homeTeam: "Denver Broncos", awayTeam: "Seattle Seahawks", time: new Date(2014, 8, 21, 14, 25, 0, 0), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "Maryland", weatherImg: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", windDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/"},
-    { sport: "mlb", homeTeam: "Colorado Rockies", awayTeam: "Arizona Diamondbacks", time: new Date(2014, 8, 21, 14, 10, 0, 0), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "Maryland", weatherImg: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", windDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/"},
-    { sport: "nba", homeTeam: "Denver Nuggets", awayTeam: "Golden State Warriors", time: new Date(2014, 8, 21, 14, 10, 0, 0), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "Maryland", weatherImg: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", windDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/"},
-    { sport: "nccab", homeTeam: "Colorado Buffs", awayTeam: "USC Tojans", time: new Date(2014, 8, 21, 14, 10, 0, 0), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "Maryland", weatherImg: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", windDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/"}
+    { sport: "nhl", homeTeam: "Colorado Avalanche", awayTeam: "Edmonton Oilers", time: new Date(2014, 8, 21, 14, 10, 0, 0), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "MD", wthrIMG: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", winDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/", tvChannel: "img/abc.png"},
+    { sport: "mls", homeTeam: "LA Galaxy", awayTeam:"Colorado Rapids", time: new Date(2014, 7, 20, 14, 0, 0, 0), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "MD", wthrIMG: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", winDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/", tvChannel: "img/abc.png"},
+    { sport: "nfl", homeTeam: "Denver Broncos", awayTeam: "Seattle Seahawks", time: new Date(2014, 8, 21, 14, 25, 0, 0), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "MD", wthrIMG: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", winDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/", tvChannel: "img/abc.png"},
+    { sport: "mlb", homeTeam: "Colorado Rockies", awayTeam: "Arizona Diamondbacks", time: new Date(2014, 8, 21, 14, 10, 0, 0), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "MD", wthrIMG: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", winDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/", tvChannel: "img/abc.png"},
+    { sport: "nba", homeTeam: "Denver Nuggets", awayTeam: "Golden State Warriors", time: new Date(2014, 8, 21, 14, 10, 0, 0), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "MD", wthrIMG: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", winDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/", tvChannel: "img/abc.png"},
+    { sport: "ncaab", homeTeam: "Colorado Buffs", awayTeam: "USC Tojans", time: new Date(2014, 8, 21, 14, 10, 0, 0), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "MD", wthrIMG: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", winDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/", tvChannel: "img/abc.png"}
 ];
 
 homeGames = [];
@@ -14,7 +14,8 @@ sortEm(games);
 
 homeAwayPush(games);
 
-writeBody(homeGames);
+writeBodyNew(games);
+
 
 $(document).scroll(function() {
     $('#navbarScroll').toggle($(this).scrollTop() > 58);
@@ -52,7 +53,7 @@ function sortEm (aryOfGames) {
         switch (i.sport) {
             case "nfl":
                 i.rank = 1;
-                i.lable = "NFL";
+                i.label = "NFL";
                 break;
             case "ncaaf":
                 i.rank = 2;
@@ -114,17 +115,17 @@ function selected (e) {
         $('#filterScroll').find('div:nth-child(2)>div>a').addClass('selectedScroll');
         $('#filter').find('div:nth-child(2)>div>a').addClass('selected');
         $('.subtitle').text('Today\'s Away Games:');
-        writeBody(awayGames);
+        writeBodyNew(awayGames);
     } else if ($text == 'Home Games') {
         $('#filterScroll').find('div:nth-child(1)>div>a').addClass('selectedScroll');
         $('#filter').find('div:nth-child(1)>div>a').addClass('selected');
         $('.subtitle').text('Today\'s Home Games:');
-        writeBody(homeGames);
+        writeBodyNew(homeGames);
     } else {
         $('#filterScroll').find('div:nth-child(3)>div>a').addClass('selectedScroll');
         $('#filter').find('div:nth-child(3)>div>a').addClass('selected');
         $('.subtitle').text('All Today\'s Games:');
-        writeBody(games);
+        writeBodyNew(games);
     }
 
 }
@@ -141,8 +142,68 @@ function homeAwayPush(ary){
     }
 }
 
+
+/*function writeBodyNew (aryOfObj) {
+        var base_template = $('.GameXtestTemp').clone();
+        $('#GameList').append(base_template);
+}*/
+
+function writeBodyNew (arry) {
+    arry.forEach(function listGame(x){
+
+        var mostOuterDiv = $('<div />')
+            .addClass('GameXtest');
+        var firstInnerDiv = $('<div />')
+            .addClass('gamewrap');
+        var sportClone = $('.clonemeSport:eq(0)').clone();
+        var venueClone = $('.clonemeVenu:eq(0)').clone();
+        var versusClone = $('.clonemeVersus:eq(0)').clone();
+        var weatherClone = $('.clonemeWeather:eq(0)').clone();
+
+        $('#GameList').append(mostOuterDiv);
+        mostOuterDiv.append(firstInnerDiv);
+        mostOuterDiv.append(sportClone);
+        firstInnerDiv.append(venueClone);
+        firstInnerDiv.append(versusClone);
+        firstInnerDiv.append(weatherClone);
+
+        venueClone.find('.venue')
+            .text(x.venue);
+        venueClone.find('.city')
+            .text(x.city);
+        venueClone.find('.state')
+            .text(x.state);
+        venueClone.find('.time1')
+            .text(formatDate(x.time,"h:mm TT"));
+        venueClone.find('.time2')
+            .text(formatDate(x.time,"dddd, MMMM d"));
+        versusClone.find('.label')
+            .text(x.label);
+        versusClone.find('.awayImg')
+            .attr('src', x.awayImg);
+        versusClone.find('.homeImg')
+            .attr('src', x.homeImg);
+        weatherClone.find('.wthrIMG')
+            .attr('src', x.wthrIMG);
+        weatherClone.find('.temp_f')
+            .text(x.temp_f);
+        weatherClone.find('.weather')
+            .text(x.weather);
+        weatherClone.find('.winDir')
+            .text(x.winDir);
+        weatherClone.find('.windSpeed')
+            .text(x.windSpeed);
+        weatherClone.find('.gusts')
+            .text(x.gusts);
+        weatherClone.find('.tvChannel')
+            .attr('src', x.tvChannel);
+    })
+
+
+};
+
 //takes in array of obj, create's div for each. adds attributes. populates innerHTML.
-function writeBody(gameArr) {
+/*function writeBody(gameArr) {
 
     for (i=0; i<gameArr.length; i++) {
 
@@ -194,7 +255,7 @@ function writeBody(gameArr) {
 
         });
     }
-};
+};*/
 
 //formatting for time:
 function formatDate(date, format, utc) {

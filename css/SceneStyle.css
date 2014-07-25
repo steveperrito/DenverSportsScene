@@ -403,10 +403,9 @@ table * {
     height: 155px;
     margin: 40px 0px 0px 0px;
     overflow: hidden;
-    margin: 0px auto 20px;
 }
 
-#gamewrap {
+.gamewrap {
     width: 603px;
     height: 150px;
     float: left;
@@ -426,6 +425,12 @@ table * {
 .venueCell {
     height: 101px;
     font-size: 20px;
+    text-align: center;
+}
+
+.venueCell span {
+    width: 100%;
+    text-align: center;
 }
 
 .timeCell {
@@ -469,7 +474,7 @@ table * {
     height: 50px;
 }
 
-.ribbon {
+.label {
     width: 70px;
     height: 15px;
     position: relative;

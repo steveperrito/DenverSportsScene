@@ -59,80 +59,79 @@
             Catch a game tonight! <!--<img src="img/arrow.png" width="40" />-->
         </div>
 
-        <div class="GameXtest">
-            <div id="gamewrap">
-                <div class="venuetest">
-                    <!--<div class="ribbonWrapper">
-                        <div class="ribbon">venue</div>
-                    </div>-->
+        <div class="GameXtesttemp" style="display:none;">
+            <div class="gamewrap">
+                <div class="venuetest clonemeVenu">
                     <table>
                         <tbody>
                             <tr>
                                 <td class="venueCell">
-                                    <strong>FedEx Field</strong> <em>Landover, MD</em>
+                                    <strong><span class="venue"></span></strong>
+                                    <em><span class="city"></span>, <span class="state"></span></em>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="timeCell">
-                                    7:00 PM EST<br /> Wednesday, July 9
+                                    <span class="time1"></span><br /> <span class="time2"></span>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="versustest">
+                <div class="versustest clonemeVersus">
                     <div class="ribbonWrapper">
-                        <div class="ribbon">NFL</div>
+                        <div class="label"></div>
                     </div>
                     <table>
                         <tbody>
                             <tr>
                                 <td>
-                                    <img src="img/SeattleSeahawks.png" width="110" height="45" />
+                                    <img class="awayImg" src="" width="110" height="45" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>--Vs--</td>
                             </tr>
                             <tr>
-                                <td><img src="img/DenverBroncosV2.png" width="110" height="45" /></td>
+                                <td><img class="homeImg" src="" width="110" height="45" /></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="weathertest">
-                    <!--<div class="ribbonWrapper">
-                        <div class="ribbon">wthr</div>
-                    </div>-->
+                <div class="weathertest clonemeWeather">
                     <table>
                         <tbody>
                             <tr>
-                                <td><img src="img/partlycloudy.gif" height="45"/></td>
+                                <td>
+                                    <img class="wthrIMG" src="" height="25"/><br />
+                                    <span class="temp_f"></span>, <span class="weather"></span>
+                                </td>
                             </tr>
                             <tr>
-                                <td> Currently 65.4 F, Partly Cloudy</td>
+                                <td>
+                                    Wind Direction: <strong><span class="winDir dataSet">NNW</span></strong><br />
+                                    Wind Speed: <strong><span class="windSpeed dataSet">22 mph</span></strong><br />
+                                    Gusts up to: <strong><span class="gusts dataSet">28 mph</span></strong>
+                                </td>
                             </tr>
                             <tr>
-                                <td>Wind Direction: <strong>NNW</strong><br />Wind Speed: <strong>22 mph</strong><br />Gusts up to: <strong>28 mph</strong></td>
+                                <td><img class="tvChannel srcSet" src="img/abc.png" height="45" /></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="sporttest">
-                <!--<div class="ribbonWrapper">
-                    <div class="ribbon">info</div>
-                </div>-->
+            <div class="sporttest clonemeSport">
                 <table>
                     <tbody>
                     <tr>
-                        <td><img src="img/map.svg" alt="Directions" /></td>
+                        <td><img class="iconMap" src="img/map.svg" alt="Directions" /></td>
                     </tr>
                     <tr>
-                        <td><img src="img/tickets.svg" alt="Buy Tickets" /></td>
+                        <td><img class="iconTickets" src="img/tickets.svg" alt="Buy Tickets" /></td>
                     </tr>
                     <tr>
-                        <td><img src="img/football.svg" alt="Venue Website" /></td>
+                        <td><img class="iconVenue" src="img/football.svg" alt="Venue Website" /></td>
                     </tr>
                     </tbody>
                 </table>
