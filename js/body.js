@@ -20,6 +20,30 @@ writeBodyNew(games);
 $(document).scroll(function() {
     $('#navbarScroll').toggle($(this).scrollTop() > 58);
     $('#filterScroll').toggle($(this).scrollTop() > 58);
+    $('#shareScroll').toggle($(this).scrollTop() > 1);
+
+    if($(this).scrollTop()>43) {
+        $('#shareScroll').css("background", "none");
+    } else {
+        $('#shareScroll').css("background", "#FFA500");
+    }
+});
+
+$(document).ready(function(){
+    $('#share').click(function (){
+        $(this).fadeOut(500);
+        $('#shareIconScroll').delay(500).fadeIn('slow', function(){
+            $('#share').empty();
+            $('#shareScroll').empty();
+        });
+    });
+    $('#shareScroll').click(function(){
+        $(this).fadeOut(500, function(){
+            $(this).empty();
+            $('#share').empty();
+        });
+        $('#shareIconScroll').delay(500).fadeIn('slow');
+    })
 });
 
 $(document).ready(function(){

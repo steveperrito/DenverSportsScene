@@ -53,8 +53,30 @@ table * {
     margin-left: 5px;
 }
 
-#sportIcon {
+#share {
     float: right;
+    cursor: pointer;
+}
+
+#shareIcons {
+    float: right;
+    display: none;
+}
+
+#shareScroll {
+    display: none;
+    cursor: pointer;
+    position: fixed;
+    margin-left: 910px;
+    z-index: 3;
+    background: rgba(255,165,0,1);
+}
+
+#shareIconScroll {
+    display: none;
+    position: fixed;
+    margin-left: 870px;
+    z-index: 4;
 }
 
 /*Header end, Nav Bar Start*/
