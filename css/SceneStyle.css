@@ -58,11 +58,6 @@ table * {
     cursor: pointer;
 }
 
-#shareIcons {
-    float: right;
-    display: none;
-}
-
 #shareScroll {
     display: none;
     cursor: pointer;
@@ -213,24 +208,25 @@ table * {
 }
 
 #filter {
+    position: absolute;
+    margin-left: 830px;
     border: 1px dashed black;
     border-top: none;
     border-right: none;
     z-index: 1;
     height: 108px;
-    width: 120px;
+    width: 119px;
     animation: filterFocus 1.5s 1;
     -webkit-animation: filterFocus 1s 1;
     -moz-animation: filterFocus 1s 1;
     -o-animation: filterFocus 1s 1;
     background-color: rgba(255,255,255,1);
-    float: right;
 }
 
 #filter div {
     border-bottom: 1px dashed black;
     height: 35px;
-    width: 120px;
+    width: 119px;
 
 }
 
@@ -238,7 +234,7 @@ table * {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    width: 120px;
+    width: 119px;
 }
 
 #filter div div:hover {
@@ -256,7 +252,7 @@ table * {
 
 #filterScroll {
     position: fixed;
-    margin-left: 829px;
+    margin-left: 830px;
     background-color: rgba(255,255,255,1);
     z-index: 1;
     top: 35px;
@@ -271,7 +267,7 @@ table * {
 #filterScroll div {
     border-bottom: 1px dashed black;
     height: 35px;
-    width: 120px;
+    width: 119px;
 
 }
 
@@ -279,7 +275,7 @@ table * {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    width: 120px;
+    width: 119px;
 }
 
 #filterScroll div div:hover {
@@ -293,6 +289,10 @@ table * {
 
 #filterScroll div:hover {
     font-weight: bold;
+}
+
+.fl2 {
+    display: none;
 }
 
 /*Filter end*/
@@ -423,7 +423,7 @@ table * {
 .GameXtest {
     width: 680px;
     height: 155px;
-    margin: 40px 0px 0px 0px;
+    margin: 40px auto 0px;
     overflow: hidden;
 }
 

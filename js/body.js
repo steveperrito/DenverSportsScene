@@ -31,18 +31,26 @@ $(document).scroll(function() {
 
 $(document).ready(function(){
     $('#share').click(function (){
-        $(this).fadeOut(500);
-        $('#shareIconScroll').delay(500).fadeIn('slow', function(){
-            $('#share').empty();
+        $(this).fadeOut(400, function(){
+            $(this).empty();
             $('#shareScroll').empty();
         });
+        $('#shareIconScroll').delay(400).fadeIn(400);
     });
     $('#shareScroll').click(function(){
-        $(this).fadeOut(500, function(){
+        $('#share').empty();
+        $(this).fadeOut(400, function(){
             $(this).empty();
-            $('#share').empty();
         });
-        $('#shareIconScroll').delay(500).fadeIn('slow');
+        $('#shareIconScroll').delay(400).fadeIn(400);
+    })
+});
+
+$(document).ready(function(){
+    var delayer = 0;
+    $('.fl2').each(function(){
+        $(this).delay(delayer).fadeIn(250);
+        delayer += 250;
     })
 });
 
