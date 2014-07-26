@@ -19,7 +19,6 @@ a {
 table * {
     padding: 0;
     margin: 0;
-    border-spacing: 0;
 }
 
 #wrapper {
@@ -32,11 +31,10 @@ table * {
 /*Header Start*/
 
 #header {
-    background: rgba(255,165,0,1);
+    background: #FFA500;
 	height: 58px;
 	width: 950px;
     margin: auto;
-    overflow: hidden;
 }
 
 #title {
@@ -64,7 +62,7 @@ table * {
     position: fixed;
     margin-left: 910px;
     z-index: 3;
-    background: rgba(255,165,0,1);
+    background: #FFA500;
 }
 
 #shareIconScroll {
@@ -78,21 +76,20 @@ table * {
 
 #navbar {
     width: 950px;
-    background: rgba(255,165,0,1);
+    background: #FFA500;
     margin: 0 auto;
     padding: 0;
-    overflow: hidden;
 }
 
 #navbar ul {
     width: 950px;
-    padding: 0px;
+    padding: 0;
     height: 35px;
     margin: 0 0 0 105px;
 }
 
 #navbar ul li {
-    padding: 7px 0px 9px 0px;
+    padding: 7px 0 9px 0;
     width: 124px;
     border-right: 1px solid black;
     display: inline-block;
@@ -101,7 +98,7 @@ table * {
 }
 
 #navbar ul li:last-child {
-    border-right: 0px;
+    border-right: 0;
 }
 
 #navbar ul li:hover {
@@ -116,20 +113,19 @@ table * {
     margin: 0;
     top: 0;
     z-index: 2;
-    overflow: hidden;
 }
 
 #navbarScroll ul {
     width: 950px;
-    padding: 0px;
+    padding: 0;
     height: 35px;
     margin: 0 auto;
-    background: rgba(255,165,0,1);
+    background: #FFA500;
 }
 
 #navbarScroll ul li {
-    padding: 7px 0px 9px 0px;
-    margin: 0px;
+    padding: 7px 0 9px 0;
+    margin: 0;
     width: 124px;
     border-right: 1px solid black;
     display: inline-block;
@@ -138,7 +134,7 @@ table * {
 }
 
 #navbarScroll ul li:last-child {
-    border-right: 0px;
+    border-right: 0;
 }
 
 #navbarScroll ul li:first-child {
@@ -158,55 +154,6 @@ table * {
 }
 /*Nav Bar end Filter Start*/
 
-@keyframes filterFocus{
-    0% {
-        margin-right: -380px;
-    }
-    70% {
-        margin-right: 10px;
-    }
-    100% {
-        margin-right: 0;
-    }
-}
-
-
-@-webkit-keyframes filterFocus{
-    0% {
-        margin-right: -380px;
-    }
-    70% {
-        margin-right: 10px;
-    }
-    100% {
-        margin-right: 0;
-    }
-}
-
-@-moz-keyframes filterFocus{
-    0% {
-        margin-right: -380px;
-    }
-    70% {
-        margin-right: 10px;
-    }
-    100% {
-        margin-right: 0;
-    }
-}
-
-@-o-keyframes filterFocus{
-    0% {
-        margin-right: -380px;
-    }
-    70% {
-        margin-right: 10px;
-    }
-    100% {
-        margin-right: 0;
-    }
-}
-
 #filter {
     position: absolute;
     margin-left: 830px;
@@ -216,11 +163,7 @@ table * {
     z-index: 1;
     height: 108px;
     width: 119px;
-    animation: filterFocus 1.5s 1;
-    -webkit-animation: filterFocus 1s 1;
-    -moz-animation: filterFocus 1s 1;
-    -o-animation: filterFocus 1s 1;
-    background-color: rgba(255,255,255,1);
+    background: white;
 }
 
 #filter div {
@@ -243,7 +186,7 @@ table * {
 }
 
 #filter div:last-child {
-    border-bottom: 0px;
+    border-bottom: 0;
 }
 
 #filter div:hover {
@@ -253,14 +196,14 @@ table * {
 #filterScroll {
     position: fixed;
     margin-left: 830px;
-    background-color: rgba(255,255,255,1);
+    background: white;
     z-index: 1;
     top: 35px;
     border: 1px dashed black;
     border-top: none;
     border-right: none;
     height: 108px;
-    width: 120px;
+    width: 119px;
     display: none;
 }
 
@@ -284,7 +227,7 @@ table * {
 }
 
 #filterScroll div:last-child {
-    border-bottom: 0px;
+    border-bottom: 0;
 }
 
 #filterScroll div:hover {
@@ -341,89 +284,10 @@ table * {
     padding-bottom: 190px;
 }
 
-.GameXfirst {
-    width: 750px;
-    height: 102px;
-    margin: 0;
-    -moz-box-shadow: inset 0 0 10px #000000;
-    -webkit-box-shadow: inset 0 0 10px #000000;
-    box-shadow: inset 0 0 10px #000000;
-    background: #FFFFFF;
-}
-
-.GameX {
-    width: 750px;
-    height: 102px;
-    margin: 40px 0px 0px 0px;
-    -moz-box-shadow: inset 0 0 10px #000000;
-    -webkit-box-shadow: inset 0 0 10px #000000;
-    box-shadow: inset 0 0 10px #000000;
-    background: #FFFFFF;
-}
-
-.sport {
-    width: 245px;
-    height: 100px;
-    display: inline-table;
-    text-align: center;
-    font-size: 42px;
-    font-style: italic;
-    color: #7E7E7E;
-    letter-spacing: 10px;
-    border-right: 1px solid #7E7E7E;
-}
-
-.versus {
-    width: 245px;
-    height: 100px;
-    display: inline-table;
-    text-align: center;
-    border-right: 1px solid #7E7E7E;
-}
-
-.date {
-    width: 245px;
-    height: 100px;
-    display: inline-table;
-    text-align: center;
-}
-
-.content {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-/* List of games end, start Footer */
-
-#footer {
-    height: 75px;
-    width: 100%;
-    min-width: 1019px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-
-#footer div {
-    margin: 0 auto;
-    width: 950px;
-    height: 75px;
-    background: rgba(255,165,0,1);
-}
-
-.copywrite {
-    margin: auto;
-    font-size: 10px;
-    text-align: center;
-}
-/* Footer end*/
-
-/* test redesign */
-
 .GameXtest {
     width: 680px;
     height: 155px;
-    margin: 40px auto 0px;
+    margin: 40px auto 0;
     overflow: hidden;
 }
 
@@ -480,7 +344,7 @@ table * {
     height: 150px;
     margin: 0;
     padding: 0;
-    border-spacing: 0px;
+    border-spacing: 0;
 }
 
 .versustest table tr td {
@@ -570,3 +434,27 @@ table * {
     background: #f2f2f2;
     cursor: pointer;
 }
+/* List of games end, start Footer */
+
+#footer {
+    height: 75px;
+    width: 100%;
+    min-width: 1019px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#footer div {
+    margin: 0 auto;
+    width: 950px;
+    height: 75px;
+    background: #FFA500;
+}
+
+.copywrite {
+    margin: auto;
+    font-size: 10px;
+    text-align: center;
+}
+/* Footer end*/
