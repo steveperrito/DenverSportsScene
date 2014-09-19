@@ -295,7 +295,7 @@ table * {
     width: 603px;
     height: 150px;
     float: left;
-    background: #ffffff;
+    background: rgba(255,255,255,1);
 }
 
 .venuetest {

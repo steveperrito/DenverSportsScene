@@ -6,7 +6,6 @@ games = [
     { sport: "nba", homeTeam: "Denver Nuggets", awayTeam: "Golden State Warriors", time1: formatDate(new Date(2014, 8, 21, 14, 10, 0, 0), "h:mm TT"), time2:formatDate(new Date(2014, 8, 21, 14, 10, 0, 0), "dddd, MMMM d"), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "MD", wthrIMG: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", winDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/", tvChannel: "img/abc.png"},
     { sport: "ncaab", homeTeam: "Colorado Buffs", awayTeam: "USC Tojans", time1: formatDate(new Date(2014, 8, 21, 14, 10, 0, 0), "h:mm TT"), time2:formatDate(new Date(2014, 8, 21, 14, 10, 0, 0), "dddd, MMMM d"), homeImg: "img/DenverBroncosV2.png", awayImg: "img/SeattleSeahawks.png", venue: "FedEx Field", city: "Landover", state: "MD", wthrIMG: "img/partlycloudy.gif", weather: "Partly Cloudy", temp_f: "66.3", winDir: "NNW", windSpeed: "22 mph", gusts: "28 mph", tickets: "#", directions: "http://www.google.com", venueSite: "http://www.redskins.com/fedexfield/", tvChannel: "img/abc.png"}
 ];
-
 homeGames = [];
 awayGames = [];
 
@@ -47,8 +46,8 @@ $(document).ready(function(){
 $(document).ready(function(){
     var delayer = 0;
     $('.fl2').each(function(){
-        $(this).delay(delayer).fadeIn(250);
-        delayer += 250;
+        $(this).delay(delayer).fadeIn(500);
+        delayer += 500;
     })
 });
 
