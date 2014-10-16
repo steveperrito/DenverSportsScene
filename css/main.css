@@ -1,0 +1,78 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+.fadein {
+    display: none;
+}
+
+.theJumboh {
+    float: left;
+}
+
+a em strong {
+    color: #FB4F14;
+}
+
+.navbar-inverse {
+    background-image: -webkit-linear-gradient(top,#002244 0,#222 100%);
+    background-image: linear-gradient(to bottom,#002244 0,#222 100%);
+    background-repeat: repeat-x;
+}
+
+.txtCenter {
+    text-align: center;
+}
+
+.vs {
+    font-style: italic;
+}
+
+.game-info-small {
+    display: none;
+    font-style: italic;
+}
+
+.away {
+    text-align: right;
+}
+
+.home {
+    text-align: left;
+}
+
+.time-active {
+    color: grey;
+}
+
+.glyphicon {
+    color: #FB4F14;
+}
+
+.clone {
+    display: none;
+}
+
+.spinner {
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 1199px) {
+    .game-info-big {
+        display: none;
+    }
+
+    .game-info-small {
+        display: inline;
+    }
+    .away {
+        text-align: center;
+    }
+
+    .home {
+        text-align: center;
+    }
+
+}
