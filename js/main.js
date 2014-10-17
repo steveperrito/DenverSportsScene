@@ -5,6 +5,7 @@ $(function () {
     var tomorrow = moment().add(1, 'day').format('MM/DD/YYYY');
     var yesterday = moment().add(-1, 'day').format('MM/DD/YYYY');
     var today = moment().format('MM/DD/YYYY');
+    var currentDateChoice = moment().format('MM/DD/YYYY');
     var gameBody = $('.game-body');
 
     $.get(urlToQuery, function (data) {
@@ -33,32 +34,49 @@ $(function () {
         if ($(e.target).hasClass('yesterday')) {
             listEm(cleanRows, yesterday, 'homeAway');
         }
-
+        if ($(e.target).hasClass('home-btn')) {
+            listEm(cleanRows, currentDateChoice, 'home');
+        }
+        if ($(e.target).hasClass('away-btn')) {
+            listEm(cleanRows, currentDateChoice, 'away');
+        }
+        if ($(e.target).hasClass('all-btn')) {
+            listEm(cleanRows, currentDateChoice, 'homeAway');
+        }
     });
 
     function listEm (unSortedAry, date, homeOrAway) {
-
+        var titleDate = moment(date).format('dddd, MMM Do');
         var gameList = sortGameDay(date, unSortedAry);
+        var btnActivate = '.' + homeOrAway + '-btn';
 
+        currentDateChoice = date;
+        $('.theJumboh').text(titleDate);
         gameBody.empty();
 
         if(homeOrAway === 'homeAway') {
+            removeActive();
+            $('.all-btn').addClass('active');
+
             if (combineHomeAway(gameList).length > 0) {
                 sortGames(combineHomeAway(gameList)).forEach(function(el) {
                     var oneGame = writeBody(el);
                     gameBody.append(oneGame);
                 })
             } else {
-                noGameMsg();
+                noGameMsg(homeOrAway);
             }
         } else {
+            removeActive();
+            $(btnActivate).addClass('active');
+
             if (gameList[homeOrAway].length > 0) {
                 sortGames(gameList[homeOrAway]).forEach(function(el) {
                     var oneGame = writeBody(el);
                     gameBody.append(oneGame);
                 })
             } else {
-                noGameMsg();
+                noGameMsg(homeOrAway);
             }
         }
     }
@@ -160,17 +178,73 @@ $(function () {
         return merged;
     }
 
-    function noGameMsg () {
-        var uHoH = document.createElement('h1');
-        var otherOptions = document.createElement('p');
+    function noGameMsg (homeOrAway) {
+        var homeAwayTxt = (homeOrAway == 'homeAway')? '':homeOrAway;
+        var homeAwayLinkTxt;
+        var homeAwayLinkClass;
+        var warningRow = document.createElement('div');
+        var warningCol = document.createElement('div');
+        var panelWrap = document.createElement('div');
+        var panelTitle = document.createElement('div');
+        var panelTitleH = document.createElement('h3');
+        var panelBody = document.createElement('div');
         var lookMore = document.createElement('a');
-        $(uHoH).text('Uh Oh...');
-        $(otherOptions).text('There are no Home Games today.');
-        $(lookMore).text(' Click here to check for tomorrow\'s games');
-        $(lookMore).addClass('tomorrow');
+
+        switch (homeAwayTxt) {
+            case 'home':
+                homeAwayLinkTxt = 'away';
+                homeAwayLinkClass = 'away-btn';
+                break;
+            case 'away':
+                homeAwayLinkTxt = 'home';
+                homeAwayLinkClass = 'home-btn';
+                break;
+            case '':
+                homeAwayLinkTxt = 'tomorrow\'s';
+                homeAwayLinkClass = 'tomorrow';
+                break;
+            default:
+                homeAwayLinkTxt = '';
+        }
+
+        $(warningRow).addClass('row');
+        $(warningRow).css({
+            'margin-top': '30px',
+            'display': 'none'
+        })
+        $(warningCol).addClass('col-md-6 col-md-offset-3');
+        $(panelWrap).addClass('panel panel-danger');
+        $(panelTitle).addClass('panel-heading');
+        $(panelTitleH).addClass('panel-title');
+        $(panelTitleH).text('Uh Oh...');
+        $(panelBody).addClass('panel-body');
+        $(panelBody).text('Looks like there are no ' + homeAwayTxt + ' games on ' + currentDateChoice + ' ');
+        $(lookMore).text('Try the ' + homeAwayLinkTxt + ' games');
+        $(lookMore).addClass(homeAwayLinkClass);
         lookMore.href = '#';
-        gameBody.append(uHoH);
-        gameBody.append(otherOptions);
-        $(otherOptions).append(lookMore);
+
+        gameBody.append(warningRow);
+        $(warningRow).append(warningCol);
+        $(warningCol).append(panelWrap);
+        $(panelWrap).append(panelTitle);
+        $(panelWrap).append(panelBody);
+        $(panelTitle).append(panelTitleH);
+        $(panelBody).append(lookMore);
+        $(warningRow).fadeIn();
     }
+
+    function removeActive () {
+        $('.home-btn').removeClass('active');
+        $('.away-btn').removeClass('active');
+        $('.all-btn').removeClass('active');
+    }
+
+    $('.calendar').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    })
+        .on('changeDate', function(e) {
+            preferredDate = e.format([0], 'mm/dd/yyyy');
+            listEm(cleanRows, preferredDate, 'homeAway')
+        });
 });

@@ -23,6 +23,7 @@
         }
     </style>
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/datepicker.css"/>
     <link rel="stylesheet" href="css/main.css">
 
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
@@ -48,21 +49,16 @@
                 <li><a class="yesterday" href="#">Yesterday</a></li>
                 <li><a class="active today" href="#">Today</a></li>
                 <li><a class="tomorrow" href="#">Tomorrow</a></li>
-                <li><a class="calendar" href="#">More</a></li>
+                <li><a class="calendar" href="#"><span class="glyphicon glyphicon-calendar"></span></a></li>
             </ul>
         </div>
         <!--/.navbar-collapse -->
     </div>
 </div>
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
         <h1 class="theJumboh">Today's Home Games</h1>
-
-        <div class="glyph">
-            <span class="glyphicon glyphicon-circle-arrow-right fadein"></span>
-        </div>
     </div>
 </div>
 
@@ -98,9 +94,20 @@
 <!--end display none-->
 
 <div class="container">
-    <div class="game-body">
-        <img class="spinner" src="img/ajax-loader.gif" width="32" />
+    <div id="filter" class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+            <div class="btn-group btn-group-justified">
+                <a type="button" class="home-btn btn btn-default active">Home</a>
+                <a type="button" class="away-btn btn btn-default">Away</a>
+                <a type="button" class="all-btn btn btn-default">All</a>
+            </div>
+        </div>
     </div>
+
+    <div class="game-body">
+        <img class="spinner" src="img/ajax-loader.gif" width="32"/>
+    </div>
+
     <hr>
 
     <footer>
@@ -115,9 +122,10 @@
 
 <script src="js/vendor/moment.js"></script>
 
+<script src="js/vendor/bootstrap-datepicker.js"></script>
+
 <script src="js/main.js"></script>
 
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
     (function (b, o, i, l, e, r) {
         b.GoogleAnalyticsObject = l;

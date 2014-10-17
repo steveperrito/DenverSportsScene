@@ -3,13 +3,6 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-.fadein {
-    display: none;
-}
-
-.theJumboh {
-    float: left;
-}
 
 a em strong {
     color: #FB4F14;
@@ -46,10 +39,6 @@ a em strong {
     color: grey;
 }
 
-.glyphicon {
-    color: #FB4F14;
-}
-
 .clone {
     display: none;
 }
@@ -57,6 +46,19 @@ a em strong {
 .spinner {
     display: block;
     margin: 0 auto;
+    /*margin-top: 30px;*/
+}
+
+#filter {
+    text-align: center;
+    margin: 0 auto 30px;
+}
+
+.jumbotron {
+    background-image: url(../img/bg-app2.png);
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 @media (max-width: 1199px) {
