@@ -55,7 +55,7 @@ a em strong {
 }
 
 .jumbotron {
-    background-image: url(../img/bg-app2.png);
+    /*background-image: url(../img/bg-app2.png);*/
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
