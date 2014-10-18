@@ -256,8 +256,9 @@ $(function () {
         todayHighlight: true
     })
         .on('changeDate', function(e) {
-            if (!$('.collapse').hasClass('in') || !$('.collapse').hasClass('collapsing')){
-                $('.collapse').collapse();
+            if (!($('.collapse').hasClass('in')) || !($('.collapse').hasClass('collapsing'))){
+                $('.collapse').collapse('hide');
+                console.log('was triggered');
             }
             preferredDate = e.format([0], 'mm/dd/yyyy');
             listEm(cleanRows, preferredDate, 'homeAway')
