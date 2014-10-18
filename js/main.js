@@ -20,7 +20,7 @@ $(function () {
             cleanRows.push(JsonObj);
         })
 
-        listEm(cleanRows, today, 'home');
+        listEm(cleanRows, today, 'homeAway');
     });
 
     $('.container').click(function(e) {
@@ -49,6 +49,13 @@ $(function () {
         var titleDate = moment(date).format('dddd, MMM Do');
         var gameList = sortGameDay(date, unSortedAry);
         var btnActivate = '.' + homeOrAway + '-btn';
+        var homeBadge = gameList['home'].length;
+        var awayBadge = gameList['away'].length;
+        var allBadge = combineHomeAway(gameList).length;
+
+        $('.home-badge').text(homeBadge);
+        $('.away-badge').text(awayBadge);
+        $('.all-badge').text(allBadge);
 
         currentDateChoice = date;
         $('.theJumboh').text(titleDate);
@@ -100,7 +107,10 @@ $(function () {
             } else {
                 gameSchema.away.push(el);
             }
-        })
+        });
+
+        console.log(gameSchema.home);
+        console.log(gameSchema.away);
 
         return gameSchema;
     }
@@ -124,19 +134,21 @@ $(function () {
     function writeBody (obj) {
         var gameListItem = $('.clone:eq(0)').clone();
         var removeClone = gameListItem.closest('div.clone');
-        var awayTeam = gameListItem.find('h2.away-team');
+        var awayTeam = gameListItem.find('h3.away-team');
         var venue = gameListItem.find('span.venue');
         var time = gameListItem.find('span.time');
         var tvChannel = gameListItem.find('span.tv-channel');
         var directions = gameListItem.find('a.directions');
-        var homeTeam = gameListItem.find('h2.home-team');
+        var homeTeam = gameListItem.find('h3.home-team');
 
         removeClone.removeClass('clone');
         awayTeam.text(obj.awayteam);
         venue.text(obj.venue + ' |');
         time.text(obj.time + ' |');
         tvChannel.text(obj.tv + ' |');
-        directions.attr('href', 'http://maps.google.com/' + obj.city + obj.state);
+        directions.attr({
+            'href': 'http://maps.google.com/?q=' + encodeURIComponent(obj.venue + ', ' + obj.city + ', ' + obj.state),
+            'target': '_blank'});
         homeTeam.text(obj.hometeam);
 
         return gameListItem;
@@ -192,16 +204,16 @@ $(function () {
 
         switch (homeAwayTxt) {
             case 'home':
-                homeAwayLinkTxt = 'away';
+                homeAwayLinkTxt = 'Try the away games';
                 homeAwayLinkClass = 'away-btn';
                 break;
             case 'away':
-                homeAwayLinkTxt = 'home';
+                homeAwayLinkTxt = 'Try the home games';
                 homeAwayLinkClass = 'home-btn';
                 break;
             case '':
-                homeAwayLinkTxt = 'tomorrow\'s';
-                homeAwayLinkClass = 'tomorrow';
+                homeAwayLinkTxt = '';
+                homeAwayLinkClass = '';
                 break;
             default:
                 homeAwayLinkTxt = '';
@@ -212,14 +224,14 @@ $(function () {
             'margin-top': '30px',
             'display': 'none'
         })
-        $(warningCol).addClass('col-md-6 col-md-offset-3');
+        $(warningCol).addClass('col-sm-6 col-sm-offset-3');
         $(panelWrap).addClass('panel panel-danger');
         $(panelTitle).addClass('panel-heading');
         $(panelTitleH).addClass('panel-title');
         $(panelTitleH).text('Uh Oh...');
         $(panelBody).addClass('panel-body');
         $(panelBody).text('Looks like there are no ' + homeAwayTxt + ' games on ' + currentDateChoice + ' ');
-        $(lookMore).text('Try the ' + homeAwayLinkTxt + ' games');
+        $(lookMore).text(homeAwayLinkTxt);
         $(lookMore).addClass(homeAwayLinkClass);
         lookMore.href = '#';
 

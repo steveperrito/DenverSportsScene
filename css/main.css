@@ -55,10 +55,22 @@ a em strong {
 }
 
 .jumbotron {
-    /*background-image: url(../img/bg-app2.png);*/
-    background-position: center bottom;
+    /*background-image: url(../img/IMG_6080.JPG);*/
+    background-position: right bottom;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+h1.theJumboh {
+    /*color: transparent;*/
+}
+
+.match-up {
+    /*border: 1px solid black;*/
+}
+
+.badge {
+    font-weight: normal;
 }
 
 @media (max-width: 1199px) {
