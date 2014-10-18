@@ -26,12 +26,15 @@ $(function () {
     $('.container').click(function(e) {
         e.preventDefault;
         if ($(e.target).hasClass('tomorrow')) {
+            collapseMobileMenu();
             listEm(cleanRows, tomorrow, 'homeAway');
         }
         if ($(e.target).hasClass('today')) {
+            collapseMobileMenu();
             listEm(cleanRows, today, 'homeAway');
         }
         if ($(e.target).hasClass('yesterday')) {
+            collapseMobileMenu();
             listEm(cleanRows, yesterday, 'homeAway');
         }
         if ($(e.target).hasClass('home-btn')) {
@@ -119,7 +122,9 @@ $(function () {
         if (
             obj.hometeam == 'Denver Broncos' ||
             obj.hometeam == 'Denver Nuggets' ||
-            obj.hometeam == 'Colorado Avalanche'
+            obj.hometeam == 'Colorado Avalanche' ||
+            obj.hometeam == 'Colorado Rapids' ||
+            obj.hometeam == 'CU Buffs'
            ) {
             return true;
         } else {
@@ -256,11 +261,14 @@ $(function () {
         todayHighlight: true
     })
         .on('changeDate', function(e) {
-            if (!($('.collapse').hasClass('in')) || !($('.collapse').hasClass('collapsing'))){
-                $('.collapse').collapse('hide');
-                console.log('was triggered');
-            }
+            collapseMobileMenu();
             preferredDate = e.format([0], 'mm/dd/yyyy');
             listEm(cleanRows, preferredDate, 'homeAway')
         });
+
+    function collapseMobileMenu () {
+        if (!($('.collapse').hasClass('in')) || !($('.collapse').hasClass('collapsing'))){
+            $('.collapse').collapse('hide');
+        }
+    }
 });
