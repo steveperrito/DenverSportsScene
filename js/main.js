@@ -1,3 +1,9 @@
+//TODO: Team records
+//TODO: rotate jumbotron bg
+//TODO: mark home games somehow
+//TODO: add weekend link
+//TODO: think about how to use team logos in match-up lsiting
+
 $(function () {
 
     var cleanRows = [];
@@ -55,6 +61,19 @@ $(function () {
         var homeBadge = gameList['home'].length;
         var awayBadge = gameList['away'].length;
         var allBadge = combineHomeAway(gameList).length;
+        var jumboTron = $('.jumbotron');
+        var teamBG;
+
+        //set jumbotron bg
+        jumboTron.removeClass('bg-DenverBroncos bg-DUPioneers bg-DenverNuggets bg-CUBuffs bg-ColoradoAvalanche bg-ColoradoRapids')
+        if (homeBadge > 0) {
+            teamBG = sortGames(gameList.home)[0].hometeam;
+        } else if (awayBadge > 0){
+            teamBG = sortGames(gameList.home)[0].awayteam;
+        } else {
+            teamBG = "Denver Broncos"
+        }
+        jumboTron.addClass('bg-' + teamBG.replace(/\s/g, ''));
 
         $('.home-badge').text(homeBadge);
         $('.away-badge').text(awayBadge);
@@ -112,9 +131,6 @@ $(function () {
             }
         });
 
-        console.log(gameSchema.home);
-        console.log(gameSchema.away);
-
         return gameSchema;
     }
 
@@ -146,8 +162,10 @@ $(function () {
         var tvChannel = gameListItem.find('span.tv-channel');
         var directions = gameListItem.find('a.directions');
         var homeTeam = gameListItem.find('h3.home-team');
+        var theSport = gameListItem.find('h4.sport');
 
         removeClone.removeClass('clone');
+        theSport.text(obj.sport);
         awayTeam.text(obj.awayteam);
         venue.text(obj.venue + ' |');
         time.text(obj.time + ' |');
@@ -168,10 +186,25 @@ $(function () {
                     el.rank = 1;
                     break;
                 case 'NHL':
-                    el.rank = 3;
+                    el.rank = 4;
                     break;
                 case 'NBA':
                     el.rank = 2;
+                    break;
+                case 'NCAA Hockey':
+                    el.rank = 8;
+                    break;
+                case 'MLS':
+                    el.rank = 7;
+                    break;
+                case 'NCAA Football':
+                    el.rank = 5;
+                    break;
+                case 'NCAA Hoops':
+                    el.rank = 6;
+                    break;
+                case 'MLB':
+                    el.rank = 3;
                     break;
                 default:
                     return;

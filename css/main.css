@@ -18,8 +18,10 @@ a em strong {
     text-align: center;
 }
 
-.vs {
+h2.vs {
     font-style: italic;
+    font-weight: 100;
+    text-align: center;
 }
 
 .game-info-small {
@@ -54,23 +56,71 @@ a em strong {
     margin: 0 auto 30px;
 }
 
-.jumbotron {
-    /*background-image: url(../img/IMG_6080.JPG);*/
-    background-position: right bottom;
+/*.jumbotron {
+
+}*/
+
+/*TEAM BGS*/
+.bg-DUPioneers {
+    background-image: url(../img/Denver_University_Pioneers_Logo.svg);
+    background-position: right;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 300px;
 }
+
+.bg-DenverBroncos {
+    background-image: url(../img/denver-broncos.svg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 300px;
+}
+
+.bg-DenverNuggets {
+    background-image: url(../img/Denver_Nuggets.svg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 300px;
+}
+
+.bg-CUBuffs {
+    background-image: url(../img/University-of-Colorado-Boulder-sports-logo.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 300px;
+}
+
+.bg-ColoradoAvalanche {
+    background-image: url(../img/Colorado_Avalanche_logo.svg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 300px;
+}
+
+.bg-ColoradoRapids {
+    background-image: url(../img/Denver_University_Pioneers_Logo.svg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 300px;
+}
+
+/*END TEAM BGS*/
 
 h1.theJumboh {
     /*color: transparent;*/
-}
-
-.match-up {
-    /*border: 1px solid black;*/
+    font-weight: 100;
 }
 
 .badge {
     font-weight: normal;
+}
+
+h4.sport {
+    font-style: italic;
+    color: #002244;
+}
+
+.btn-default .badge {
+    background-color: #FB4F14;
 }
 
 @media (max-width: 1199px) {
@@ -89,4 +139,30 @@ h1.theJumboh {
         text-align: center;
     }
 
+}
+
+@media (max-width: 575px) {
+    .bg-DUPioneers {
+        background-image: none;
+    }
+
+    .bg-DenverBroncos {
+        background-image: none;
+    }
+
+    .bg-DenverNuggets {
+        background-image: none;
+    }
+
+    .bg-CUBuffs {
+        background-image: none;
+    }
+
+    .bg-ColoradoAvalanche {
+        background-image: none;
+    }
+
+    .bg-ColoradoRapids {
+        background-image: none;
+    }
 }
