@@ -124,7 +124,8 @@ $(function () {
             obj.hometeam == 'Denver Nuggets' ||
             obj.hometeam == 'Colorado Avalanche' ||
             obj.hometeam == 'Colorado Rapids' ||
-            obj.hometeam == 'CU Buffs'
+            obj.hometeam == 'CU Buffs' ||
+            obj.hometeam == 'DU Pioneers'
            ) {
             return true;
         } else {
