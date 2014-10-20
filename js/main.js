@@ -1,8 +1,8 @@
 //TODO: Team records
-//TODO: rotate jumbotron bg
 //TODO: mark home games somehow
 //TODO: add weekend link
 //TODO: think about how to use team logos in match-up lsiting
+//TODO: add weather
 
 $(function () {
 
@@ -69,7 +69,7 @@ $(function () {
         if (homeBadge > 0) {
             teamBG = sortGames(gameList.home)[0].hometeam;
         } else if (awayBadge > 0){
-            teamBG = sortGames(gameList.home)[0].awayteam;
+            teamBG = sortGames(gameList.away)[0].awayteam;
         } else {
             teamBG = "Denver Broncos"
         }
@@ -297,7 +297,7 @@ $(function () {
         .on('changeDate', function(e) {
             collapseMobileMenu();
             preferredDate = e.format([0], 'mm/dd/yyyy');
-            listEm(cleanRows, preferredDate, 'homeAway')
+            listEm(cleanRows, preferredDate, 'homeAway');
         });
 
     function collapseMobileMenu () {
