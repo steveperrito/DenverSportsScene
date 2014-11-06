@@ -62,14 +62,14 @@ h2.vs {
 
 /*TEAM BGS*/
 .bg-DUPioneers {
-    background-image: url(../img/Denver_University_Pioneers_Logo.svg);
+    background-image: url(../img/DU_Pioneers.svg);
     background-position: right;
     background-repeat: no-repeat;
     background-size: 300px;
 }
 
 .bg-DenverBroncos {
-    background-image: url(../img/denver-broncos.svg);
+    background-image: url(../img/Denver_Broncos.svg);
     background-position: right;
     background-repeat: no-repeat;
     background-size: 300px;
@@ -83,21 +83,21 @@ h2.vs {
 }
 
 .bg-CUBuffs {
-    background-image: url(../img/University-of-Colorado-Boulder-sports-logo.png);
+    background-image: url(../img/CU_Buffs.png);
     background-position: right;
     background-repeat: no-repeat;
     background-size: 300px;
 }
 
 .bg-ColoradoAvalanche {
-    background-image: url(../img/Colorado_Avalanche_logo.svg);
+    background-image: url(../img/Colorado_Avalanche.svg);
     background-position: right;
     background-repeat: no-repeat;
     background-size: 300px;
 }
 
 .bg-ColoradoRapids {
-    background-image: url(../img/Denver_University_Pioneers_Logo.svg);
+    background-image: url(../img/Colorado_Rapids.svg);
     background-position: right;
     background-repeat: no-repeat;
     background-size: 300px;
@@ -123,7 +123,7 @@ h4.sport {
     background-color: #FB4F14;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
     .game-info-big {
         display: none;
     }
@@ -139,6 +139,10 @@ h4.sport {
         text-align: center;
     }
 
+}
+
+.vs-row {
+    text-align: center;
 }
 
 @media (max-width: 575px) {

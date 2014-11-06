@@ -3,6 +3,7 @@
 //TODO: add weekend link
 //TODO: think about how to use team logos in match-up lsiting
 //TODO: add weather
+//TODO: add game preview?
 
 $(function () {
 
@@ -75,14 +76,19 @@ $(function () {
         }
         jumboTron.addClass('bg-' + teamBG.replace(/\s/g, ''));
 
+        //set badge numbers on filter btns
         $('.home-badge').text(homeBadge);
         $('.away-badge').text(awayBadge);
         $('.all-badge').text(allBadge);
 
+        //set current date for use by other functions
         currentDateChoice = date;
+        //set title text to selected date
         $('.theJumboh').text(titleDate);
+        //get rid of stuff
         gameBody.empty();
 
+        //if home, show home games and activate home button. same for away and all games.
         if(homeOrAway === 'homeAway') {
             removeActive();
             $('.all-btn').addClass('active');
@@ -110,6 +116,7 @@ $(function () {
         }
     }
 
+    //look at whole array of data and grab today's games from it
     function sortGameDay (day, ary) {
         var gameSchema = {
             home : [],
@@ -134,6 +141,7 @@ $(function () {
         return gameSchema;
     }
 
+    //answer question: if this match-up is a home game or not
     function homeGame(obj) {
         if (
             obj.hometeam == 'Denver Broncos' ||
@@ -149,10 +157,12 @@ $(function () {
         }
     }
 
+    //use moment.js to get all dates formatted to one type.
     function formatIt(str) {
         return moment(str, 'M/DD/YYYY').format('MM/DD/YYYY');
     }
 
+    //will create a row, given a match-up object.
     function writeBody (obj) {
         var gameListItem = $('.clone:eq(0)').clone();
         var removeClone = gameListItem.closest('div.clone');
@@ -163,6 +173,11 @@ $(function () {
         var directions = gameListItem.find('a.directions');
         var homeTeam = gameListItem.find('h3.home-team');
         var theSport = gameListItem.find('h4.sport');
+        var awayTeamImg = gameListItem.find('img.away-team-img');
+        var homeTeamImg = gameListItem.find('img.home-team-img');
+        //stupid png problem
+        var awayBuff = (obj.awayteam == 'CU Buffs')? '.png': '.svg';
+        var homeBuff = (obj.hometeam == 'CU Buffs')? '.png': '.svg';
 
         removeClone.removeClass('clone');
         theSport.text(obj.sport);
@@ -171,14 +186,20 @@ $(function () {
         time.text(obj.time + ' |');
         tvChannel.text(obj.tv + ' |');
         directions.attr({
-            'href': 'http://maps.google.com/?q=' + encodeURIComponent(obj.venue + ', ' + obj.city + ', ' + obj.state),
+            'href': 'http://www.google.com/maps/dir/Current+Location/' + encodeURIComponent(obj.venue + '+' + obj.city + '+' + obj.state),
             'target': '_blank'});
         homeTeam.text(obj.hometeam);
-
+        awayTeamImg.attr({
+            'src': 'img/' + obj.awayteam.replace(/ /g, '_') + awayBuff
+        });
+        homeTeamImg.attr({
+            'src': 'img/' + obj.hometeam.replace(/ /g, '_') + homeBuff
+        });
         return gameListItem;
 
     }
 
+    //will sort an array of games based on their popularity. (popularity is debatable).
     function sortGames (ary) {
         ary.forEach(function(el) {
             switch (el.sport) {
