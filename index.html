@@ -64,38 +64,46 @@
 
 <!-- display none -->
 <div class="clone">
-    <h4 class="sport"></h4>
+    <a class="directions" href=""><span class="venue"></span></a>
+    <span class="home-city"></span>
+    <span class="time"></span>
+    <span class="tv-channel"></span>
+
     <div class="row match-up well well-sm">
 
-        <div class="col-sm-3 away">
+        <div class="wthr-row text-center">
+                <img height="50" width="50" class="wthr-img" rel="popover" src="" alt=""/>
+            <span class="city-temp text-info"></span>
+        </div>
+
+        <div class="col-sm-4 away">
             <h3 class="away-team"></h3>
         </div>
-        <div class="col-sm-6">
-            <div class="row vs-row">
-                <div class="col-xs-5"><img class="away-team-img" src="" height="60" /></div>
-                <div class="col-xs-2"><h2 class="vs">VS.</h2></div>
-                <div class="col-xs-5"><img class="home-team-img" src="" height="60" /></div>
+        <div class="col-sm-4">
+            <div class="row vs-row text-center">
+                <div class="col-xs-5 no-pad"><img class="away-team-img" src="" height="60"/></div>
+                <div class="col-xs-2 no-pad"><h2 class="vs">@</h2></div>
+                <div class="col-xs-5 no-pad"><img class="home-team-img" src="" height="60"/></div>
             </div>
-            <div class="game-info-big row">
-                <dov class="col-sm-12">
-                    <p class="txtCenter">
-                        <span class="venue"></span>
-                        <span class="time"></span>
-                        <span class="tv-channel"></span>
-                        <a class="directions" href="">Directions</a>
-                    </p>
-                </dov>
+            <div class="game-info-big">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="sport text-center"></h4>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-sm-3 home">
+        <div class="col-sm-4 home">
             <h3 class="home-team"></h3>
 
-            <p class="game-info-small txtCenter">
-                <span class="venue"></span>
-                <span class="time"></span>
-                <span class="tv-channel"></span>
-                <a class="directions" href="">Directions</a>
-            </p>
+            <div class="game-info-small">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="sport text-center"></h4>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
@@ -105,9 +113,11 @@
     <div id="filter" class="row">
         <div class="col-sm-6 col-sm-offset-3">
             <div class="btn-group btn-group-justified">
-                <a type="button" class="home-btn btn btn-default active">Home <span class="home-badge badge pull-right"></span></a>
+                <a type="button" class="home-btn btn btn-default active">Home <span
+                        class="home-badge badge pull-right"></span></a>
                 <a type="button" class="away-btn btn btn-default">Away <span class="away-badge badge pull-right"></span></a>
-                <a type="button" class="all-btn btn btn-default">All <span class="all-badge badge pull-right"></span></a>
+                <a type="button" class="all-btn btn btn-default">All <span
+                        class="all-badge badge pull-right"></span></a>
             </div>
         </div>
     </div>
@@ -122,12 +132,13 @@
     <hr>
 
     <footer>
-        <p class="txtCenter">
+        <p class="text-center">
             <a class="yesterday" href="#">Yesterday</a> |
             <a class="today" href="#">Today</a> |
             <a class="tomorrow" href="#">Tomorrow</a> |
             <a class="calendar" href="#"> <span class="glyphicon glyphicon-calendar"></span></a>
         </p>
+
         <p class="txtCenter ">&copy; DenverSportsScene 2014</p>
     </footer>
 </div>

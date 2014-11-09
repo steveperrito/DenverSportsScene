@@ -1,7 +1,6 @@
 //TODO: Team records
 //TODO: mark home games somehow
 //TODO: add weekend link
-//TODO: think about how to use team logos in match-up lsiting
 //TODO: add weather
 //TODO: add game preview?
 
@@ -30,7 +29,7 @@ $(function () {
         listEm(cleanRows, today, 'homeAway');
     });
 
-    $('.container').click(function(e) {
+    $('.container').click(function (e) {
         e.preventDefault;
         if ($(e.target).hasClass('tomorrow')) {
             collapseMobileMenu();
@@ -55,7 +54,7 @@ $(function () {
         }
     });
 
-    function listEm (unSortedAry, date, homeOrAway) {
+    function listEm(unSortedAry, date, homeOrAway) {
         var titleDate = moment(date).format('dddd, MMM Do');
         var gameList = sortGameDay(date, unSortedAry);
         var btnActivate = '.' + homeOrAway + '-btn';
@@ -69,7 +68,7 @@ $(function () {
         jumboTron.removeClass('bg-DenverBroncos bg-DUPioneers bg-DenverNuggets bg-CUBuffs bg-ColoradoAvalanche bg-ColoradoRapids')
         if (homeBadge > 0) {
             teamBG = sortGames(gameList.home)[0].hometeam;
-        } else if (awayBadge > 0){
+        } else if (awayBadge > 0) {
             teamBG = sortGames(gameList.away)[0].awayteam;
         } else {
             teamBG = "Denver Broncos"
@@ -89,14 +88,16 @@ $(function () {
         gameBody.empty();
 
         //if home, show home games and activate home button. same for away and all games.
-        if(homeOrAway === 'homeAway') {
+        if (homeOrAway === 'homeAway') {
             removeActive();
             $('.all-btn').addClass('active');
 
             if (combineHomeAway(gameList).length > 0) {
-                sortGames(combineHomeAway(gameList)).forEach(function(el) {
+                sortGames(combineHomeAway(gameList)).forEach(function (el) {
                     var oneGame = writeBody(el);
                     gameBody.append(oneGame);
+                    addWeather(date, oneGame, el);
+
                 })
             } else {
                 noGameMsg(homeOrAway);
@@ -106,9 +107,10 @@ $(function () {
             $(btnActivate).addClass('active');
 
             if (gameList[homeOrAway].length > 0) {
-                sortGames(gameList[homeOrAway]).forEach(function(el) {
+                sortGames(gameList[homeOrAway]).forEach(function (el) {
                     var oneGame = writeBody(el);
                     gameBody.append(oneGame);
+                    addWeather(date, oneGame, el);
                 })
             } else {
                 noGameMsg(homeOrAway);
@@ -117,21 +119,21 @@ $(function () {
     }
 
     //look at whole array of data and grab today's games from it
-    function sortGameDay (day, ary) {
+    function sortGameDay(day, ary) {
         var gameSchema = {
-            home : [],
-            away : []
+            home: [],
+            away: []
         };
         var todaysGames = [];
 
         ary.forEach(function (el) {
-            if(formatIt(el.date) == day) {
+            if (formatIt(el.date) == day) {
                 todaysGames.push(el);
             }
         });
 
-        todaysGames.forEach(function(el){
-            if(homeGame(el)) {
+        todaysGames.forEach(function (el) {
+            if (homeGame(el)) {
                 gameSchema.home.push(el);
             } else {
                 gameSchema.away.push(el);
@@ -145,12 +147,12 @@ $(function () {
     function homeGame(obj) {
         if (
             obj.hometeam == 'Denver Broncos' ||
-            obj.hometeam == 'Denver Nuggets' ||
-            obj.hometeam == 'Colorado Avalanche' ||
-            obj.hometeam == 'Colorado Rapids' ||
-            obj.hometeam == 'CU Buffs' ||
-            obj.hometeam == 'DU Pioneers'
-           ) {
+                obj.hometeam == 'Denver Nuggets' ||
+                obj.hometeam == 'Colorado Avalanche' ||
+                obj.hometeam == 'Colorado Rapids' ||
+                obj.hometeam == 'CU Buffs' ||
+                obj.hometeam == 'DU Pioneers'
+            ) {
             return true;
         } else {
             return false;
@@ -163,7 +165,7 @@ $(function () {
     }
 
     //will create a row, given a match-up object.
-    function writeBody (obj) {
+    function writeBody(obj) {
         var gameListItem = $('.clone:eq(0)').clone();
         var removeClone = gameListItem.closest('div.clone');
         var awayTeam = gameListItem.find('h3.away-team');
@@ -175,16 +177,18 @@ $(function () {
         var theSport = gameListItem.find('h4.sport');
         var awayTeamImg = gameListItem.find('img.away-team-img');
         var homeTeamImg = gameListItem.find('img.home-team-img');
+        var homeCity = gameListItem.find('span.home-city');
         //stupid png problem
-        var awayBuff = (obj.awayteam == 'CU Buffs')? '.png': '.svg';
-        var homeBuff = (obj.hometeam == 'CU Buffs')? '.png': '.svg';
+        var awayBuff = (obj.awayteam == 'CU Buffs') ? '.png' : '.svg';
+        var homeBuff = (obj.hometeam == 'CU Buffs') ? '.png' : '.svg';
 
         removeClone.removeClass('clone');
         theSport.text(obj.sport);
         awayTeam.text(obj.awayteam);
-        venue.text(obj.venue + ' |');
+        venue.text(obj.venue);
+        homeCity.text(' (' + obj.city + ', ' + obj.state + ') ');
         time.text(obj.time + ' |');
-        tvChannel.text(obj.tv + ' |');
+        tvChannel.text(obj.tv);
         directions.attr({
             'href': 'http://www.google.com/maps/dir/Current+Location/' + encodeURIComponent(obj.venue + '+' + obj.city + '+' + obj.state),
             'target': '_blank'});
@@ -200,8 +204,8 @@ $(function () {
     }
 
     //will sort an array of games based on their popularity. (popularity is debatable).
-    function sortGames (ary) {
-        ary.forEach(function(el) {
+    function sortGames(ary) {
+        ary.forEach(function (el) {
             switch (el.sport) {
                 case 'NFL':
                     el.rank = 1;
@@ -238,7 +242,7 @@ $(function () {
         return ary;
     }
 
-    function combineHomeAway (obj) {
+    function combineHomeAway(obj) {
         var ary = [];
         var merged = [];
 
@@ -250,8 +254,8 @@ $(function () {
         return merged;
     }
 
-    function noGameMsg (homeOrAway) {
-        var homeAwayTxt = (homeOrAway == 'homeAway')? '':homeOrAway;
+    function noGameMsg(homeOrAway) {
+        var homeAwayTxt = (homeOrAway == 'homeAway') ? '' : homeOrAway;
         var homeAwayLinkTxt;
         var homeAwayLinkClass;
         var warningRow = document.createElement('div');
@@ -305,7 +309,7 @@ $(function () {
         $(warningRow).fadeIn();
     }
 
-    function removeActive () {
+    function removeActive() {
         $('.home-btn').removeClass('active');
         $('.away-btn').removeClass('active');
         $('.all-btn').removeClass('active');
@@ -315,15 +319,62 @@ $(function () {
         autoclose: true,
         todayHighlight: true
     })
-        .on('changeDate', function(e) {
+        .on('changeDate', function (e) {
             collapseMobileMenu();
             preferredDate = e.format([0], 'mm/dd/yyyy');
             listEm(cleanRows, preferredDate, 'homeAway');
         });
 
-    function collapseMobileMenu () {
-        if (!($('.collapse').hasClass('in')) || !($('.collapse').hasClass('collapsing'))){
+    function collapseMobileMenu() {
+        if (!($('.collapse').hasClass('in')) || !($('.collapse').hasClass('collapsing'))) {
             $('.collapse').collapse('hide');
         }
+    }
+
+    //after writebody, add weather with new AJAX call.
+    function addWeather(date, htmlGameRow, gameObject) {
+        if (date == today) {
+            var cityData = gameObject.city;
+            var stateData = gameObject.state;
+            var wthrURL = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityData + ',' + stateData;
+            var wthrImgURL = 'http://openweathermap.org/img/w/';
+            var wthrDescription = '';
+            var cityTemp = '';
+            var wthrImgTag = htmlGameRow.find('img.wthr-img');
+            var wthrImgParent = htmlGameRow.find('div.wthr-row');
+            var cityTempTag = htmlGameRow.find('span.city-temp');
+
+            $.getJSON(wthrURL, function (data) {
+                wthrDescription = data.weather[0].description;
+                wthrImgURL += data.weather[0].icon + '.png';
+                cityTemp = fahrenheit(data.main.temp);
+            })
+                .done(function () {
+                    wthrImgTag.attr({
+                        'src': wthrImgURL,
+                        'alt': cityData,
+                        'title': wthrDescription
+                    });
+
+                    cityTempTag.html(cityTemp + ' &#176;' + 'F');
+
+                    wthrImgParent.fadeIn();
+
+                    wthrImgParent.tooltip({
+                        'placement': 'top',
+                        'selector': '[rel="popover"]'
+                    });
+                })
+                .fail(function () {
+                    console.log('weather api request fail');
+                });
+        } else {
+            return 0;
+        }
+    }
+
+    //kelvin to Fahrenheit
+    function fahrenheit(kelvin) {
+        return (((kelvin - 273.15)*1.8) + 32).toFixed(1);
     }
 });
