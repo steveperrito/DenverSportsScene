@@ -51,6 +51,9 @@ $(function () {
         if ($(e.target).hasClass('all-btn')) {
             listEm(cleanRows, currentDateChoice, 'homeAway');
         }
+        if ($(e.target).hasClass('venue')) {
+            window.open($(e.target).parent().attr('href'), '_blank');
+        }
     });
 
     function listEm(unSortedAry, date, homeOrAway) {
@@ -368,7 +371,8 @@ $(function () {
                 .fail(function () {
                     console.log('weather api request fail');
                 });
-        } else if (moment(date).isBefore(moment().add(5, 'days')) && moment(date).isAfter(today)) {
+        } else if (moment(date).isBefore(moment().add(3, 'days')) && moment(date).isAfter(today)) {
+
             var forecastURL = 'http://api.openweathermap.org/data/2.5/forecast?q=' + cityData + ',' + stateData;
             var forecast = [];
 
@@ -411,6 +415,7 @@ $(function () {
         aryOfObjs.sort(function (a, b) {
             return a.timeDiff - b.timeDiff;
         });
+        console.log(aryOfObjs);
 
         return aryOfObjs[0];
     }
