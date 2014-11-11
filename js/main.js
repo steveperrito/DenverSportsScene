@@ -2,6 +2,7 @@
 //TODO: mark home games somehow
 //TODO: add weekend link
 //TODO: add game preview?
+//TODO: fix "click on same date" problem
 
 $(function () {
 
@@ -21,9 +22,24 @@ $(function () {
             firstStepAry.forEach(function (el) {
                 var microAry = el.split(': ');
                 JsonObj[microAry[0]] = microAry[1];
-            })
+            });
             cleanRows.push(JsonObj);
+        });
+
+        var endDates = findEndDates(cleanRows);
+
+        $('.calendar').datepicker({
+            autoclose: true,
+            todayHighlight: true,
+            endDate: endDates.newest.date,
+            startDate: endDates.oldest.date
         })
+            .on('changeDate', function (e) {
+                collapseMobileMenu();
+                var preferredDate = e.format([0], 'mm/dd/yyyy');
+                if (preferredDate == '') preferredDate = currentDateChoice;
+                listEm(cleanRows, preferredDate, 'homeAway');
+            });
 
         listEm(cleanRows, today, 'homeAway');
     });
@@ -120,7 +136,7 @@ $(function () {
         }
     }
 
-    //look at whole array of data and grab today's games from it
+    //look at whole array of data and grab games for provided date
     function sortGameDay(day, ary) {
         var gameSchema = {
             home: [],
@@ -317,16 +333,6 @@ $(function () {
         $('.all-btn').removeClass('active');
     }
 
-    $('.calendar').datepicker({
-        autoclose: true,
-        todayHighlight: true
-    })
-        .on('changeDate', function (e) {
-            collapseMobileMenu();
-            preferredDate = e.format([0], 'mm/dd/yyyy');
-            listEm(cleanRows, preferredDate, 'homeAway');
-        });
-
     function collapseMobileMenu() {
         if ($('.collapse').hasClass('in')) {
             $('.collapse').collapse('hide');
@@ -335,6 +341,7 @@ $(function () {
 
     //after writebody, add weather with new AJAX call.
     function addWeather(date, htmlGameRow, gameObject) {
+
         var cityData = gameObject.city;
         var stateData = gameObject.state;
         var wthrImgURL = 'http://openweathermap.org/img/w/';
@@ -344,34 +351,7 @@ $(function () {
         var wthrImgParent = htmlGameRow.find('div.wthr-row');
         var cityTempTag = htmlGameRow.find('span.city-temp');
 
-        if (date == today) {
-            var wthrURL = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityData + ',' + stateData;
-
-            $.getJSON(wthrURL, function (data) {
-                wthrDescription = data.weather[0].description;
-                wthrImgURL += data.weather[0].icon + '.png';
-                cityTemp = fahrenheit(data.main.temp);
-            })
-                .done(function () {
-                    wthrImgTag.attr({
-                        'src': wthrImgURL,
-                        'alt': cityData,
-                        'title': wthrDescription
-                    });
-
-                    cityTempTag.html(cityTemp + ' &#176;' + 'F');
-
-                    wthrImgParent.fadeIn();
-
-                    wthrImgParent.tooltip({
-                        'placement': 'top',
-                        'selector': '[rel="popover"]'
-                    });
-                })
-                .fail(function () {
-                    console.log('weather api request fail');
-                });
-        } else if (moment(date).isBefore(moment().add(3, 'days')) && moment(date).isAfter(today)) {
+        if (moment(date).zone('-07:00').isBefore(moment().add(3, 'days')) && moment(date + ' ' + gameObject.time).zone('-07:00').isAfter()) {
 
             var forecastURL = 'http://api.openweathermap.org/data/2.5/forecast?q=' + cityData + ',' + stateData;
             var forecast = [];
@@ -393,7 +373,7 @@ $(function () {
 
                     cityTempTag.html(cityTemp + ' &#176;' + 'F');
 
-                    wthrImgParent.fadeIn();
+                    wthrImgParent.fadeIn('slow');
 
                     wthrImgParent.tooltip({
                         'placement': 'top',
@@ -412,10 +392,10 @@ $(function () {
             var wthrDate = moment(el.dt, 'X');
             el.timeDiff = Math.abs(gameDate.diff(wthrDate));
         });
+
         aryOfObjs.sort(function (a, b) {
             return a.timeDiff - b.timeDiff;
         });
-        console.log(aryOfObjs);
 
         return aryOfObjs[0];
     }
@@ -423,5 +403,21 @@ $(function () {
     //kelvin to Fahrenheit
     function fahrenheit(kelvin) {
         return (((kelvin - 273.15)*1.8) + 32).toFixed(1);
+    }
+
+    function findEndDates(aryOfObjs){
+        var endDates = {};
+        aryOfObjs.forEach(function(el){
+            el.endDateScore = moment(el.date).format('X');
+        });
+
+        aryOfObjs.sort(function (a, b) {
+            return a.endDateScore - b.endDateScore;
+        });
+
+        endDates.oldest = aryOfObjs[0];
+        endDates.newest = aryOfObjs[aryOfObjs.length - 1];
+
+        return endDates;
     }
 });
