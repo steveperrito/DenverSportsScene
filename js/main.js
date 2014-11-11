@@ -1,7 +1,6 @@
 //TODO: Team records
 //TODO: mark home games somehow
 //TODO: add weekend link
-//TODO: add weather
 //TODO: add game preview?
 
 $(function () {
@@ -30,7 +29,7 @@ $(function () {
     });
 
     $('.container').click(function (e) {
-        e.preventDefault;
+        e.preventDefault();
         if ($(e.target).hasClass('tomorrow')) {
             collapseMobileMenu();
             listEm(cleanRows, tomorrow, 'homeAway');
@@ -234,10 +233,10 @@ $(function () {
                 default:
                     return;
             }
-        })
+        });
         ary.sort(function (a, b) {
             return a.rank - b.rank;
-        })
+        });
 
         return ary;
     }
@@ -326,23 +325,24 @@ $(function () {
         });
 
     function collapseMobileMenu() {
-        if (!($('.collapse').hasClass('in')) || !($('.collapse').hasClass('collapsing'))) {
+        if ($('.collapse').hasClass('in')) {
             $('.collapse').collapse('hide');
         }
     }
 
     //after writebody, add weather with new AJAX call.
     function addWeather(date, htmlGameRow, gameObject) {
+        var cityData = gameObject.city;
+        var stateData = gameObject.state;
+        var wthrImgURL = 'http://openweathermap.org/img/w/';
+        var wthrDescription = '';
+        var cityTemp = '';
+        var wthrImgTag = htmlGameRow.find('img.wthr-img');
+        var wthrImgParent = htmlGameRow.find('div.wthr-row');
+        var cityTempTag = htmlGameRow.find('span.city-temp');
+
         if (date == today) {
-            var cityData = gameObject.city;
-            var stateData = gameObject.state;
             var wthrURL = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityData + ',' + stateData;
-            var wthrImgURL = 'http://openweathermap.org/img/w/';
-            var wthrDescription = '';
-            var cityTemp = '';
-            var wthrImgTag = htmlGameRow.find('img.wthr-img');
-            var wthrImgParent = htmlGameRow.find('div.wthr-row');
-            var cityTempTag = htmlGameRow.find('span.city-temp');
 
             $.getJSON(wthrURL, function (data) {
                 wthrDescription = data.weather[0].description;
@@ -368,9 +368,51 @@ $(function () {
                 .fail(function () {
                     console.log('weather api request fail');
                 });
+        } else if (moment(date).isBefore(moment().add(5, 'days')) && moment(date).isAfter(today)) {
+            var forecastURL = 'http://api.openweathermap.org/data/2.5/forecast?q=' + cityData + ',' + stateData;
+            var forecast = [];
+
+            $.getJSON(forecastURL, function(data) {
+                forecast = data.list;
+            })
+                .done(function(){
+                   var bestWthr = returnClosestTime(forecast, gameObject.time, date);
+                   wthrDescription = bestWthr.weather[0].description;
+                   wthrImgURL += bestWthr.weather[0].icon + '.png';
+                   cityTemp = fahrenheit(bestWthr.main.temp);
+
+                    wthrImgTag.attr({
+                        'src': wthrImgURL,
+                        'alt': cityData,
+                        'title': wthrDescription
+                    });
+
+                    cityTempTag.html(cityTemp + ' &#176;' + 'F');
+
+                    wthrImgParent.fadeIn();
+
+                    wthrImgParent.tooltip({
+                        'placement': 'top',
+                        'selector': '[rel="popover"]'
+                    });
+                });
         } else {
             return 0;
         }
+    }
+
+    function returnClosestTime (aryOfObjs, time, date) {
+
+        aryOfObjs.forEach(function(el){
+            var gameDate = moment(date + ' ' + time).zone('-07:00');
+            var wthrDate = moment(el.dt, 'X');
+            el.timeDiff = Math.abs(gameDate.diff(wthrDate));
+        });
+        aryOfObjs.sort(function (a, b) {
+            return a.timeDiff - b.timeDiff;
+        });
+
+        return aryOfObjs[0];
     }
 
     //kelvin to Fahrenheit
