@@ -146,6 +146,27 @@ h4.sport {
     font-weight: 100;
 }
 
+.venue-time-specs {
+    border-left: 1px dotted #e3e3e3;
+    border-right: 1px dotted #e3e3e3;
+    border-top: 1px dotted #e3e3e3;
+    background-color: #FDFDFD;
+    border-radius: 3px 3px 0 0;
+}
+
+.home-away-row {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    font-size: 15px;
+    left: 5px;
+    margin-top: -4px;
+}
+
+.home-icon-color {
+    color: #FB4F14;
+}
+
 @media (max-width: 767px) {
     .game-info-big {
         display: none;

@@ -1,8 +1,6 @@
 //TODO: Team records
-//TODO: mark home games somehow
 //TODO: add weekend link
 //TODO: add game preview?
-//TODO: fix "click on same date" problem
 
 $(function () {
 
@@ -49,14 +47,17 @@ $(function () {
         if ($(e.target).hasClass('tomorrow')) {
             collapseMobileMenu();
             listEm(cleanRows, tomorrow, 'homeAway');
+            $('.calendar').datepicker('update', tomorrow);
         }
         if ($(e.target).hasClass('today')) {
             collapseMobileMenu();
             listEm(cleanRows, today, 'homeAway');
+            $('.calendar').datepicker('update', today);
         }
         if ($(e.target).hasClass('yesterday')) {
             collapseMobileMenu();
             listEm(cleanRows, yesterday, 'homeAway');
+            $('.calendar').datepicker('update', yesterday);
         }
         if ($(e.target).hasClass('home-btn')) {
             listEm(cleanRows, currentDateChoice, 'home');
@@ -111,7 +112,7 @@ $(function () {
             $('.all-btn').addClass('active');
 
             if (combineHomeAway(gameList).length > 0) {
-                sortGames(combineHomeAway(gameList)).forEach(function (el) {
+                combineHomeAway(gameList).forEach(function (el) {
                     var oneGame = writeBody(el);
                     gameBody.append(oneGame);
                     addWeather(date, oneGame, el);
@@ -125,7 +126,7 @@ $(function () {
             $(btnActivate).addClass('active');
 
             if (gameList[homeOrAway].length > 0) {
-                sortGames(gameList[homeOrAway]).forEach(function (el) {
+                gameList[homeOrAway].forEach(function (el) {
                     var oneGame = writeBody(el);
                     gameBody.append(oneGame);
                     addWeather(date, oneGame, el);
@@ -157,6 +158,9 @@ $(function () {
                 gameSchema.away.push(el);
             }
         });
+
+        sortGames(gameSchema.home);
+        sortGames(gameSchema.away);
 
         return gameSchema;
     }
@@ -196,6 +200,8 @@ $(function () {
         var awayTeamImg = gameListItem.find('img.away-team-img');
         var homeTeamImg = gameListItem.find('img.home-team-img');
         var homeCity = gameListItem.find('span.home-city');
+        var homeAwayIcon = gameListItem.find('span.home-away-icon');
+        var homeAwayIconClass = (homeGame(obj))?'glyphicon glyphicon-home home-icon-color':'glyphicon glyphicon-plane text-muted';
         //stupid png problem
         var awayBuff = (obj.awayteam == 'CU Buffs') ? '.png' : '.svg';
         var homeBuff = (obj.hometeam == 'CU Buffs') ? '.png' : '.svg';
@@ -217,6 +223,8 @@ $(function () {
         homeTeamImg.attr({
             'src': 'img/' + obj.hometeam.replace(/ /g, '_') + homeBuff
         });
+        homeAwayIcon.addClass(homeAwayIconClass);
+
         return gameListItem;
 
     }
@@ -367,7 +375,7 @@ $(function () {
 
                     wthrImgTag.attr({
                         'src': wthrImgURL,
-                        'alt': cityData,
+                        'alt': cityData + ' ' + moment(bestWthr.dt, 'X').format('MM/DD/YYYY h:mm A'),
                         'title': wthrDescription
                     });
 
