@@ -6,9 +6,9 @@ $(function () {
 
     var cleanRows = [];
     var urlToQuery = 'https://spreadsheets.google.com/feeds/list/10LaPZ_gUSp52hv1IhMvxFLt2aFBKlYPlKwASwp_WeWk/1/public/basic?alt=json';
-    var tomorrow = moment().add(1, 'day').format('MM/DD/YYYY');
-    var yesterday = moment().add(-1, 'day').format('MM/DD/YYYY');
-    var today = moment().format('MM/DD/YYYY');
+    var tomorrow = moment().zone(7).add(1, 'day').format('MM/DD/YYYY');
+    var yesterday = moment().zone(7).add(-1, 'day').format('MM/DD/YYYY');
+    var today = moment().zone(7).format('MM/DD/YYYY');
     var currentDateChoice = moment().format('MM/DD/YYYY');
     var gameBody = $('.game-body');
 
@@ -358,8 +358,10 @@ $(function () {
         var wthrImgTag = htmlGameRow.find('img.wthr-img');
         var wthrImgParent = htmlGameRow.find('div.wthr-row');
         var cityTempTag = htmlGameRow.find('span.city-temp');
+        var DaysFuture3 = moment().zone(7).add(3, 'days');
+        var Gametime = moment(date + ' ' + gameObject.time).zone(7);
 
-        if (moment(date).zone('-07:00').isBefore(moment().add(3, 'days')) && moment(date + ' ' + gameObject.time).zone('-07:00').isAfter()) {
+        if (moment(date).zone(7).isBefore(DaysFuture3) && Gametime.isAfter(moment().add(3, 'hours'))) {
 
             var forecastURL = 'http://api.openweathermap.org/data/2.5/forecast?q=' + cityData + ',' + stateData;
             var forecast = [];
@@ -376,6 +378,33 @@ $(function () {
                     wthrImgTag.attr({
                         'src': wthrImgURL,
                         'alt': cityData + ' ' + moment(bestWthr.dt, 'X').format('MM/DD/YYYY h:mm A'),
+                        'title': wthrDescription
+                    });
+
+                    cityTempTag.html(cityTemp + ' &#176;' + 'F');
+
+                    wthrImgParent.fadeIn('slow');
+
+                    wthrImgParent.tooltip({
+                        'placement': 'top',
+                        'selector': '[rel="popover"]'
+                    });
+                });
+        } else if (moment().zone(7).isAfter(Gametime.subtract(3, 'hours')) && moment().zone(7).isBefore(Gametime.add(3,'hours'))) {
+            var forecastURL = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityData + ',' + stateData;
+            var currentWeather;
+
+            $.getJSON(forecastURL, function(data) {
+                currentWeather = data;
+            })
+                .done(function(){
+                    wthrDescription = currentWeather.weather[0].description;
+                    wthrImgURL += currentWeather.weather[0].icon + '.png';
+                    cityTemp = fahrenheit(currentWeather.main.temp);
+
+                    wthrImgTag.attr({
+                        'src': wthrImgURL,
+                        'alt': cityData + ' ' + moment(currentWeather.dt, 'X').format('MM/DD/YYYY h:mm A'),
                         'title': wthrDescription
                     });
 
