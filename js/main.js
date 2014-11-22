@@ -361,7 +361,7 @@ $(function () {
         var DaysFuture3 = moment().zone(7).add(3, 'days');
         var Gametime = moment(date + ' ' + gameObject.time).zone(7);
 
-        if (moment(date).zone(7).isBefore(DaysFuture3) && Gametime.isAfter(moment().add(3, 'hours'))) {
+        if (moment(date).zone(7).isBefore(DaysFuture3) && Gametime.isAfter(moment().zone(7).add(3, 'hours'))) {
 
             var forecastURL = 'http://api.openweathermap.org/data/2.5/forecast?q=' + cityData + ',' + stateData;
             var forecast = [];
@@ -390,7 +390,8 @@ $(function () {
                         'selector': '[rel="popover"]'
                     });
                 });
-        } else if (moment().zone(7).isAfter(Gametime.subtract(3, 'hours')) && moment().zone(7).isBefore(Gametime.add(3,'hours'))) {
+        } else if (moment().zone(7).isAfter(Gametime.subtract(3, 'hours')) && moment().zone(7).isBefore(Gametime.add(6,'hours'))) {
+            
             var forecastURL = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityData + ',' + stateData;
             var currentWeather;
 
@@ -418,6 +419,7 @@ $(function () {
                     });
                 });
         } else {
+            console.log('didn\'t qualify');
             return 0;
         }
     }
